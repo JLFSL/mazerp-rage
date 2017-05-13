@@ -1,8 +1,8 @@
 {
-	"maxplayers" : 100,
-	"name" : "RAGE:MP Unofficial server", 
-	"gamemode" : "freeroam", 
-	"streamdistance" : 500.0,
-	"announce" : false,
+	"maxplayers": 100,
+	"name": "MazeRP Development Server", 
+	"gamemode": "freeroam", 
+	"streamdistance": 500.0,
+	"announce": false,
 	"port": 22005
 }

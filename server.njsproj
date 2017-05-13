@@ -17,7 +17,36 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="conf.json" />
+    <Content Include="node.dll" />
     <Content Include="README.md" />
+    <Content Include="server.exe" />
+    <Content Include="ui\fonts\CenturyGothicRegular.ttf" />
+    <Content Include="ui\fonts\CodeProLC.otf" />
+    <Content Include="ui\index.html" />
+    <Content Include="ui\style\checkbox.css" />
+    <Content Include="ui\style\main.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+    <Folder Include="obj\Release\" />
+    <Folder Include="packages\" />
+    <Folder Include="packages\server\" />
+    <Folder Include="packages\server\commands\" />
+    <Folder Include="packages\server\events\" />
+    <Folder Include="ui\" />
+    <Folder Include="ui\fonts\" />
+    <Folder Include="ui\js\" />
+    <Folder Include="ui\style\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="packages\server\commands\basiccommands.js" />
+    <Compile Include="packages\server\events.js" />
+    <Compile Include="packages\server\events\commandhandler.js" />
+    <Compile Include="packages\server\events\common.js" />
+    <Compile Include="packages\server\hashes.js" />
+    <Compile Include="packages\server\index.js" />
+    <Compile Include="ui\jquery-1.11.3.min.js" />
+    <Compile Include="ui\js\main.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->

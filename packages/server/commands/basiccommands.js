@@ -32,7 +32,7 @@ module.exports =
 			player.veh.destroy();
 		
 		player.veh = mp.vehicles.new(mp.joaat(args[1]), pos);
-		player.veh.dimension = player.dimension;
+        //player.veh.dimension = player.dimension;
 	},
 		
 	"setweather": (player, args) =>

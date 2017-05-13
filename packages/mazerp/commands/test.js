@@ -1,5 +1,7 @@
+const sendPlayerMessage = require("../functions/sendPlayerMessage");
+
 module.exports = {
     "test": (player, text, arguments) => {
-        console.log("test");
+        sendPlayerMessage(player, "Test!");
     }
 };

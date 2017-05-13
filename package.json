@@ -1,0 +1,24 @@
+{
+  "name": "mazerp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-dir": "^0.1.16",
+    "striptags": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLFSL/mazerp-rage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JLFSL/mazerp-rage/issues"
+  },
+  "homepage": "https://github.com/JLFSL/mazerp-rage#readme"
+}

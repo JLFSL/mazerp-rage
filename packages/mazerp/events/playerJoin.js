@@ -12,8 +12,6 @@ module.exports = {
 
 		player.currentVehicle = null;
 		player.lastVehicle = null;
-
-		sendPlayerMessage(player, "Welcome to the MazeRP Development Server!");
 		sendGlobalMessage(`${player.name} has joined!`);
 	}
 };

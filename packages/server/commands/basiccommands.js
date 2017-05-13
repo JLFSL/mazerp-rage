@@ -26,8 +26,6 @@ module.exports =
 		var pos = player.position;
 		pos.x += 2.0;
 			
-		// добавим созданную машину в массив createdVehs, чтобы контролировать в дальнейшем количество
-		// созданных игроками машин
 		if(player.veh)
 			player.veh.destroy();
 		
@@ -49,14 +47,14 @@ module.exports =
 	{
 		let id = parseInt(args[1]);
 		
-		if(global.dimensions[id]
+		if (global.dimensions[id]
 			&& global.dimensions[id] > 63)
 		{
 			player.outputChatBox("Dimension is full");
 		}
 		else
 		{
-			if(global.dimensions[id])
+			if (global.dimensions[id])
 			{
 				global.dimensions[id]++;
 				global.dimensions[player.dimension]--;

@@ -1,9 +1,15 @@
-const constants = require("../constants");
+const constants = require("../constants"),
+      framework = require("../");
 
 const sendGlobalMessage = require("../functions/sendGlobalMessage");
 
 module.exports = {
-	"playerQuit": (player) => {
-		sendGlobalMessage(`${player.name} has left.`);
-	}
+    events: [
+        {
+            name: "playerQuit",
+            execute: (player) => {
+                sendGlobalMessage(`${player.name} has left.`);
+            }
+        }
+    ]
 };

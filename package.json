@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "mysql": "^2.13.0",
     "node-dir": "^0.1.16",
     "striptags": "^3.0.1"
   },

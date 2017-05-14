@@ -1,17 +1,22 @@
-const constants = require("../constants");
+const constants = require("../constants"),
+      framework = require("../");
 
-const sendGlobalMessage = require("../functions/sendGlobalMessage"),
-	  sendPlayerMessage = require("../functions/sendPlayerMessage");
+const sendGlobalMessage = require("../functions/sendGlobalMessage");
 
 module.exports = {
-	"playerJoin": (player) => {
-		player.model = constants.models[Math.floor(Math.random() * constants.models.length)]
-		player.giveWeapon(constants.weapons, 1000);
-		player.spawn(constants.spawns[Math.floor(Math.random() * constants.spawns.length)]);
-		player.dimension = 1;
+    events: [
+        {
+            name: "playerJoin",
+            execute: (player) => {
+                sendGlobalMessage(`${player.name} has joined the game!`);
 
-		player.currentVehicle = null;
-		player.lastVehicle = null;
-		sendGlobalMessage(`${player.name} has joined!`);
-	}
+                player.model = constants.models[Math.floor(Math.random() * constants.models.length)]
+                player.giveWeapon(constants.weapons, 1000);
+                player.spawn(constants.spawns[Math.floor(Math.random() * constants.spawns.length)]);
+                player.dimension = 1;
+
+                player.vehicle = null;
+            }
+        }
+    ]
 };

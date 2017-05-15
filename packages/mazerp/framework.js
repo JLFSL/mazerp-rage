@@ -16,10 +16,12 @@ module.exports = class Framework extends EventEmitter {
             walk(options.directories[i])
                 .then((files) => {
                     for (let i = 0; i < files.length; i++) {
-                        this.load(files[i])
-                            .catch((err) => {
-                                this.emit("error", err);
-                            });
+                        if (!(files[i].includes("node_modules") || files[i].includes("public"))) {
+                            this.load(files[i])
+                                .catch((err) => {
+                                    this.emit("error", err);
+                                });
+                        }
                     }
                 })
                 .catch((err) => {

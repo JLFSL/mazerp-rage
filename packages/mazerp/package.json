@@ -1,0 +1,27 @@
+{
+  "name": "mazerp-server-package",
+  "version": "1.0.0",
+  "description": "A roleplay server for the Grand Theft Auto V modification Rage Multiplayer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLFSL/mazerp-rage.git"
+  },
+  "author": "MazeRP Development Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JLFSL/mazerp-rage/issues"
+  },
+  "homepage": "https://github.com/JLFSL/mazerp-rage#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "moment": "^2.18.1",
+    "node-dir": "^0.1.16",
+    "striptags": "^3.0.1",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.4.6"
+  }
+}

@@ -1,8 +1,0 @@
-{
-    "mysql": {
-        "host": "http://dev.five-multiplayer.net",
-        "user": "admin_mazerp",
-        "password": "Rb2quhUO2W",
-        "database": "admin_mazerp"
-    }
-}

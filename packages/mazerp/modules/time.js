@@ -1,30 +1,29 @@
-const framework = require("../framework");
+var time = 21600, // Start the clock at 6am
+    minutes = 0;
 
-var hour = 6,
-    minute = 0;
-    second = 0;
+mp.environment.time.hour = Math.floor(time / (60 * 60));
+mp.environment.time.minute = Math.floor((time % (60 * 60)) / 60);
+mp.environment.time.second = Math.floor((time % (60 * 60) / 60) % 60);
 
-mp.environment.time.hour = hour;
-mp.environment.time.minute = minute;
+// console.log(mp.environment.time);
+// console.log(minutes);
 
 setInterval(() => {
-  minute += 1;
+    minutes += 1;
+    if (minutes >= 60) {
+        minutes = 0; 
+        time = 21600;
+    }
+    
+    if (minutes <= 45) time += 1120;
+    else time += 2400;
+    
+    if (time >= 86400) time -= 86400;
 
-  if (minute >= 60) minute = 0;
-  if (minute <= 45) second += 1120;
-  else second += 2400;
+    mp.environment.time.hour = Math.floor(time / (60 * 60));
+    mp.environment.time.minute = Math.floor((time % (60 * 60)) / 60);
+    mp.environment.time.second = Math.floor((time % (60 * 60) / 60) % 60);
 
-  if (second >= 86400) second -= 86400;
-
-  seconds = second % 60;
-  minutes = seconds / 60;
-  hours = minutes / 60;
-
-  mp.environment.time.second = seconds;
-  mp.environment.time.minute = minutes;
-  mp.environment.time.hour = hours;
-
-  console.log(hours);
-  console.log(minutes);
-  console.log(seconds);
-}, 60000);
+    // console.log(mp.environment.time);
+    // console.log(minutes);
+}, 30000);

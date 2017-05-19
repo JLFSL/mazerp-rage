@@ -10,7 +10,7 @@ module.exports = {
         aliases: [""],
         name: "Login",
         execute: (player, message, arguments) => {
-            if (arguments.length < 3) return functions.sendPlayerMessage(player, "The usage for that command is <email> <password>.");
+            if (arguments.length < 3) return functions.sendPlayerMessage(player, "The usage for that command is (/login [email] [password])");
             
             // Send POST request to check if user is whitelisted
             request.post('https://ucp.mazerp.com/api/auth/user')
@@ -50,6 +50,9 @@ module.exports = {
                                 logger.log("debug", `${player.name} successfully logged in. (ADMIN: ${results[0].staff})`);
                                 functions.sendPlayerMessage(player, `SERVER: Successfully logged in.`);
 
+                                // Public world, where all the roleplay happens.
+                                player.dimension = variables.dimensions.public;
+                                
                                 // And done with the connection.
                                 connection.release();
 
@@ -58,6 +61,10 @@ module.exports = {
                             }
                         });
                     });
+                }
+                else
+                {
+                    functions.sendPlayerMessage(player, "SERVER: Could not login to your forum account. Did you fill in the right details and are you whitelisted as a <b>civilian</b>?");
                 }
             });
         }

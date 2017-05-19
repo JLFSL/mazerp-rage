@@ -5,7 +5,7 @@ module.exports = {
         aliases: [],
         name: "Model",
         execute: (player, message, arguments) => {
-            if (arguments.length < 2) return functions.sendPlayerMessage(player, "The usage for that command is <model name>.");
+            if (arguments.length < 2) return functions.sendPlayerMessage(player, "The usage for that command is (/model [modelname])");
            
             player.model = mp.joaat(arguments[1]);
         }

@@ -32,7 +32,6 @@ module.exports = {
                         },
 
                         function (error, results, fields) {
-                           // if(length(results))
                             if(Object.keys(results).length === 0)
                             {
                                 functions.sendPlayerMessage(player, "SERVER: Character not found in the database, check your login details.");

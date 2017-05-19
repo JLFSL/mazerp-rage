@@ -1,6 +1,7 @@
-const framework = require("../../../"),
-      logger = framework.logger,
-      variables = framework.variables;
+const   functions = require("../../../functions"),
+        framework = require("../../../"),
+        logger = framework.logger,
+        variables = framework.variables;
 
 module.exports = {
     event: {

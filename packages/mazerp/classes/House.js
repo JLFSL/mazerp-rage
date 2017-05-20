@@ -1,5 +1,7 @@
 
-class CHouse {
+let housing = module.exports;
+
+housing.House = class CHouse {
     constructor(vPosition) {
         this.vPosition = vPosition;
         this.pCheckpoint = mp.checkpoints.new(45, vPosition, vPosition, vPosition, 1.0, 0, 255, 0, 255, true, variables.dimenions.public);

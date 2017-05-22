@@ -5,6 +5,10 @@ module.exports = {
 		unemployment: 1 // To be discussed
 	},
 
+	maxValues: {
+		players: 100
+	},
+
     vehicles: [],
 
 	spawn: [
@@ -23,5 +27,9 @@ module.exports = {
 		event: 999999991, // World for events, to not ruin other's experience.
 		noLogin: 999999992, // As not logged in players shouldn't be able to perform any actions in the world.
 		testing: 999999993 // World for testing purposes, to not ruin other's experience.
+	},
+
+	taxi: {
+		defaultFare: 5
 	}
 };

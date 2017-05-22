@@ -9,7 +9,7 @@ module.exports = {
 
             var position = player.position; position.x += 2.0;
             player.spawnedVehicle = mp.vehicles.new(mp.joaat(arguments[1]), position);
-            player.spawnedVehicle.dimension = 1;
+            player.spawnedVehicle.dimension = player.dimension;
         }
     }
 };

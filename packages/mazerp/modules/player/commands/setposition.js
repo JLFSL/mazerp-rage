@@ -5,8 +5,9 @@ module.exports = {
         aliases: ["setpos"],
         name: "SetPosition",
         execute: (player, message, arguments) => {
-            if (arguments.length < 4) return functions.sendPlayerMessage(player, "The usage for that command is (/setposition [x] [y] [z])");
-            player.position = new Vector3(parseFloat(arguments[1]), parseFloat(arguments[2]), parseFloat(arguments[3]));
+            if (arguments.length < 4) return player.sendMessage("The usage for that command is (/setposition [x] [y] [z])");
+
+            player.setPosition(parseFloat(arguments[1]), parseFloat(arguments[2]), parseFloat(arguments[3]));
         }
     }
 };

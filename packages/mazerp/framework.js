@@ -1,14 +1,16 @@
-const Collection = require("./structures/Collection"),
+const Collection = require("./classes/Collection"),
       EventEmitter = require("events").EventEmitter,
-      Logger = require("./structures/Logger"),
+      Logger = require("./classes/Logger"),
       nodeDir = require("node-dir");
+
+const Player = require("./classes/Player");
 
 module.exports = class Framework extends EventEmitter {
     constructor(options = {}) {
         super();
 
         if (!options.directories) throw new Error("Directories to be loaded must be specified");
-        else if (!options.logger) throw new Error("Logger options must be specified")
+        else if (!options.logger) throw new Error("Logger options must be specified");
 
         this.logger = new Logger(options.logger).logger;
 
@@ -30,16 +32,21 @@ module.exports = class Framework extends EventEmitter {
                 });
         }
 
-        mp.events.add({ "playerJoin": (player) => { this.emit("playerJoin", player); }});
-        mp.events.add({ "playerQuit": (player, exitType, reason) => { this.emit("playerQuit", player, exitType, reason); }});
-        mp.events.add({ "playerDeath": (player, reason, killer) => { this.emit("playerDeath", player, reason, killer); }});
-        mp.events.add({ "playerEnterVehicle": (player, vehicle, seat) => { this.emit("playerEnterVehicle", player, vehicle, seat); }});
-        mp.events.add({ "playerEnteredVehicle": (player, vehicle) => { this.emit("playerEnteredVehicle", player, vehicle); }});
-        mp.events.add({ "playerExitVehicle": (player) => { this.emit("playerExitVehicle", player); }});
-        mp.events.add({ "playerLeftVehicle": (player, vehicle) => { this.emit("playerLeftVehicle", player, vehicle); }});
-        mp.events.add({ "playerSpawn": (player) => { this.emit("playerSpawn", player); }});
-        mp.events.add({ "playerChat": (player, message) => { this.emit("playerChat", player, message); }});
-        mp.events.add({ "playerCommand": (player, message) => { this.emit("playerCommand", player, message); }});
+        mp.events.add({ "playerJoin": (player) => {
+            player.class = new Player(player);
+
+            this.emit("playerJoin", player.class);
+        }});
+        
+        mp.events.add({ "playerQuit": (player, exitType, reason) => { this.emit("playerQuit", player.class, exitType, reason); }});
+        mp.events.add({ "playerDeath": (player, reason, killer) => { this.emit("playerDeath", player.class, reason, killer); }});
+        mp.events.add({ "playerEnterVehicle": (player, vehicle, seat) => { this.emit("playerEnterVehicle", player.class, vehicle, seat); }});
+        mp.events.add({ "playerEnteredVehicle": (player, vehicle) => { this.emit("playerEnteredVehicle", player.class, vehicle); }});
+        mp.events.add({ "playerExitVehicle": (player) => { this.emit("playerExitVehicle", player.class); }});
+        mp.events.add({ "playerLeftVehicle": (player, vehicle) => { this.emit("playerLeftVehicle", player.class, vehicle); }});
+        mp.events.add({ "playerSpawn": (player) => { this.emit("playerSpawn", player.class); }});
+        mp.events.add({ "playerChat": (player, message) => { this.emit("playerChat", player.class, message); }});
+        mp.events.add({ "playerCommand": (player, message) => { this.emit("playerCommand", player.class, message); }});
 
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});

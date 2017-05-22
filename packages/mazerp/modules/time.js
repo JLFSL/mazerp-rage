@@ -5,8 +5,8 @@ mp.environment.time.hour = Math.floor(time / (60 * 60));
 mp.environment.time.minute = Math.floor((time % (60 * 60)) / 60);
 mp.environment.time.second = Math.floor((time % (60 * 60) / 60) % 60);
 
-console.log(mp.environment.time);
-console.log(ticks);
+//console.log(mp.environment.time);
+//console.log(ticks);
 
 setInterval(() => {
     ticks += 1;
@@ -24,6 +24,6 @@ setInterval(() => {
     mp.environment.time.minute = Math.floor((time % (60 * 60)) / 60);
     mp.environment.time.second = Math.floor(time % 60);
 
-    console.log(mp.environment.time);
-    console.log(ticks);
+    //console.log(mp.environment.time);
+    //console.log(ticks);
 }, 10);

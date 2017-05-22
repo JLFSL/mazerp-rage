@@ -8,7 +8,7 @@ mp.environment.time.second = Math.floor((time % (60 * 60) / 60) % 60);
 //console.log(mp.environment.time);
 //console.log(ticks);
 
-setInterval(() => {
+/*setInterval(() => {
     ticks += 1;
     if (ticks >= 360000) {
         ticks = 0; 
@@ -26,4 +26,4 @@ setInterval(() => {
 
     //console.log(mp.environment.time);
     //console.log(ticks);
-}, 10);
+}, 10);*/

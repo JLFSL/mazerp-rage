@@ -13,7 +13,6 @@ body {
     -ms-user-select: none;
     user-select: none;
 	height: 100%;
-	background-color: rgba(0,0,0,0);
 }
 
 form, html {

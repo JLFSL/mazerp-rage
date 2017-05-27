@@ -2,11 +2,19 @@ function disconnect() {
     mp.events.callRemote("cefData", "disconnect");
 }
 
+var authenticationBrowser;
+
 mp.events.add({
     "authenticationShow": () => {
-        var authenticationBrowser = mp.browsers.new("package://html/login.html");
+        authenticationBrowser = mp.browsers.new("package://html/login.html");
+    },
 
-        mp.events.callRemote("cefLoginData", "clientsided call to server");
+    "authenticationHide": () => {
+        authenticationBrowser.destroy();
+    },
+
+    "authenticationLogin": result => {
+        mp.events.callRemote("cefLogin", result);
     },
 
     "authenticationDisconnect": () => {

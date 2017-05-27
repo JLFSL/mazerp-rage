@@ -2,6 +2,7 @@ const Framework = require("./framework"),
       functions = require("./functions");
       path = require("path"),
       variables = require("./variables");
+      Vehicle = require ("./classes/Vehicle.js");
 
 const framework = new Framework({
     directories: [path.resolve(__dirname, "modules")],
@@ -23,6 +24,8 @@ framework.on("error", (err) => {
 module.exports = framework;
 module.exports.functions = functions;
 module.exports.variables = variables;
+
+Vehicle.load();
 
 /* California Highway Patrol */
 

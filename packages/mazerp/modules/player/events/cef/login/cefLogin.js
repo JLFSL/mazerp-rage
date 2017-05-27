@@ -11,7 +11,8 @@ module.exports = {
             const parseData = JSON.parse(result);
             logger.log("debug", `cefLogin(${player.name}): ${parseData.email}, ${parseData.password}.`);
 
-            if (player.logged_in) return player.sendMessage("SERVER: You are already logged in.");
+            if (player.logged_in) 
+                return player.sendMessage("SERVER: You are already logged in.");
 
             superagent
                 .post("https://ucp.mazerp.com/api/auth/user")

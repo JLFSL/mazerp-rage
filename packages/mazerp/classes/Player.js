@@ -64,6 +64,10 @@ module.exports = class Player {
         this.player.model = model;
     }
 
+    playAnimation(dictionary, name) {
+        this.player.playAnimation(arguments[1], arguments[2]);
+    }
+
     get model() {
         return this.player.model;
     }

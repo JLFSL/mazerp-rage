@@ -47,7 +47,9 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "playerSpawn": (player) => { this.emit("playerSpawn", player.class); }});
         mp.events.add({ "playerChat": (player, message) => { this.emit("playerChat", player.class, message); }});
         mp.events.add({ "playerCommand": (player, message) => { this.emit("playerCommand", player.class, message); }});
-        mp.events.add({ "cefData": (player, result) => { this.emit("cefData", player.class, result); }});
+
+        mp.events.add({ "cefLoginData": (player, result) => { this.emit("cefLoginData", player.class, result); }});
+        mp.events.add({ "cefLoginDisconnect": (player) => { this.emit("cefLoginDisconnect", player.class); }});
 
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});

@@ -12,10 +12,11 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 <link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
 <link rel="stylesheet" href="css\font-awesome.min.css">
+
 <title>Login Menu</title>
 </head>
 
-<body class="background-color: rgba(0,0,0,0);">
+<body style="background-color: rgba(0,0,0,0);">
 <form id="login">
   <div class="col-md-2"> </div>
   <div class="col-md-8">
@@ -51,7 +52,7 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
           </div>
           <div class="col-md-6">
             <div class="selection-row">
-              <div class="selection-button-full button-red" id="disconnect">Disconnect</div>
+              <div class="selection-button-full button-red" onclick="mp.trigger('authenticationDisconnect');" id="disconnect">Disconnect</div>
             </div>
           </div>
         </div>

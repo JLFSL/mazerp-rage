@@ -88,7 +88,7 @@ module.exports = class Player {
     }
 
     playAnimation(dictionary, name) {
-        this.player.playAnimation(arguments[1], arguments[2]);
+        this.player.playAnimation(dictionary, name);
     }
 
     get model() {

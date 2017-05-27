@@ -3,6 +3,29 @@ const mysql = require("../modules/mysql");
 module.exports = class Player {
     constructor(player) {
         this.player = player;
+        this.iID;
+        this.iEntity;
+
+        this.iCash;
+        this.iBankAccount;
+        this.stLastPaycheck;
+        
+        this.pJob;
+        this.sJobName;
+        this.iJobLevel;
+        this.iJobMissions;
+
+        this.fHunger = 0.0;
+        this.fThirst = 0.0;
+        this.bUnconscious = false;
+
+        this.pFaction;
+        this.iFactionRank;
+        this.sFactionName;
+        this.bOnDuty;
+
+        this.iRent;
+        this.iHouse;
     }
 
     sendMessage(message) {

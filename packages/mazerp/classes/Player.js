@@ -87,10 +87,6 @@ module.exports = class Player {
         this.player.model = model;
     }
 
-    playAnimation(dictionary, name) {
-        this.player.playAnimation(dictionary, name);
-    }
-
     get model() {
         return this.player.model;
     }
@@ -117,7 +113,12 @@ module.exports = class Player {
 
     spawn(x, y, z, heading) {
         this.player.spawn(new mp.Vector3(x, y, z));
-        this.player.heading = heading
+        this.player.heading = heading;
+    }
+
+    playAnimation(dictionary, name) {
+        this.player.playAnimation(name, dictionary);
+        this.sendMessage(`SERVER: Playing animation <b>${name}</b> from <b>${dictionary}</b>`);
     }
 
     select() {

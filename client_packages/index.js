@@ -7,7 +7,9 @@ mp.events.add({
     },
 
     "authenticationHide": () => {
-        authenticationBrowser.destroy();
+        if(authenticationBrowser)
+            authenticationBrowser.destroy();
+            
         mp.game.controls.enableAllControlActions(32);
     },
 

@@ -1,4 +1,5 @@
-var authenticationBrowser;
+let authenticationBrowser;
+let interactionMenuBrowser;
 
 mp.events.add({
     "authenticationShow": () => {
@@ -19,5 +20,14 @@ mp.events.add({
 
     "authenticationDisconnect": () => {
         mp.events.callRemote("cefLoginDisconnect");
+    },
+
+    "interactionMenuShow": () => {
+        interactionMenuBrowser = mp.browsers.new("package://html/action_menu.html");
+    },
+    "checkWallet": () => {
+        mp.events.callRemote("cefCheckWallet");
+        if(interactionMenuBrowser)
+            interactionMenuBrowser.destroy();
     }
 });

@@ -22,7 +22,7 @@ housing.House = class CHouse {
     }
 
     Buy = function(pPlayer) {
-        if(this->bForSale == true) {
+        if(this.bForSale == true) {
             if(pPlayer.iRent == -1) {
                 if(pPlayer.iCash >= this.iPrice) {
                     this.sOwner = GetUserName; //!

@@ -1,5 +1,5 @@
 const functions = require("../../../functions");
-const mysql = require("../modules/mysql");
+const mysql = require("../../mysql");
 
 module.exports = {
     command: {

@@ -455,7 +455,7 @@ div, span, strong, small {
 }
 
 .window-main {
-	height: 325px;
+	height: 330px;
 	background-color: rgba(17, 17, 17, 0.85);
 	margin: auto;
 	overflow: auto;
@@ -512,6 +512,14 @@ div, span, strong, small {
 	color: #ddd;
 	background-color: #333;
 	-webkit-transition: all .1s ease-in-out;
+}
+
+.window-amount-button-active {
+	background-color: #111;
+}
+
+.window-amount-button-active:hover {
+	background-color: #111;
 }
 
 .window-value {
@@ -608,7 +616,6 @@ div, span, strong, small {
 .window-cart-detail {
 	background-color: #222;
 	opacity: 0.95;
-	min-height: 80px;
 	padding-left: 30px;
 	padding-top: 5px;
 	margin: auto;

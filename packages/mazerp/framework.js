@@ -50,7 +50,11 @@ module.exports = class Framework extends EventEmitter {
 
         mp.events.add({ "cefLogin": (player, result) => { this.emit("cefLogin", player.class, result); }});
         mp.events.add({ "cefLoginDisconnect": (player) => { this.emit("cefLoginDisconnect", player.class); }});
+
         mp.events.add({ "cefCheckWallet": (player) => { this.emit("cefCheckWallet", player.class); }});
+
+        mp.events.add({ "cefBuyItem": (player, item, name, amount, price) => { this.emit("cefBuyItem", player.class, item, name, amount, price); }});
+        mp.events.add({ "cefBuyItems": (player, itemArray, price) => { this.emit("cefBuyItems", player.class, itemArray, price); }});
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});
         // mp.events.add({ "playerExitCheckpoint": (player) => { this.emit("playerExitCheckpoint", player); }});

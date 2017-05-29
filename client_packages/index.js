@@ -1,5 +1,6 @@
 let authenticationBrowser;
 let interactionMenuBrowser;
+let shopMenuBrowser;
 
 mp.events.add({
     "authenticationShow": () => {
@@ -29,5 +30,17 @@ mp.events.add({
         mp.events.callRemote("cefCheckWallet");
         if(interactionMenuBrowser)
             interactionMenuBrowser.destroy();
+    },
+
+    "shopMenuShow": () => {
+        shopMenuBrowser = mp.browsers.new("package://html/shop.html");
+    },
+
+    "shopBuyItem": (item, name, amount, price) => {
+        mp.events.callRemote("cefBuyItem", item, name, amount, price);
+    },
+
+    "shopBuyItems": (itemArray, price) => {
+        mp.events.callRemote("cefBuyItems", itemArray, price);
     }
 });

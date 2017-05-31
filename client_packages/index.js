@@ -1,6 +1,7 @@
 let authenticationBrowser;
 let interactionMenuBrowser;
 let shopMenuBrowser;
+let policeMBT;
 
 mp.events.add({
     "authenticationShow": () => {
@@ -42,5 +43,13 @@ mp.events.add({
 
     "shopBuyItems": (itemArray, price) => {
         mp.events.callRemote("cefBuyItems", itemArray, price);
+    },
+
+    "policeShowMBT": (player) => {
+        policeMBT = mp.browsers.new("package://html/police_computer.html?player="+player.name);
+    },
+
+    "policeMBT_runID": (ID) => {
+        mp.events.callRemote("cefPoliceMBT_runID", ID);
     }
 });

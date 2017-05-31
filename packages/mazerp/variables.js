@@ -11,6 +11,8 @@ module.exports = {
 
     vehicles: [],
 
+	TaxiInfo: {},
+
 	spawn: [
 		{
 			position: new mp.Vector3(-1037.2386474609375, -2737.613525390625, 20.169275283813477),

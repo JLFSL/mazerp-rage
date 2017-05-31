@@ -4,6 +4,7 @@ const Collection = require("./classes/Collection"),
       nodeDir = require("node-dir");
 
 const Player = require("./classes/Player");
+const Taxi = require("./classes/Taxi");
 
 module.exports = class Framework extends EventEmitter {
     constructor(options = {}) {
@@ -55,6 +56,9 @@ module.exports = class Framework extends EventEmitter {
 
         mp.events.add({ "cefBuyItem": (player, item, name, amount, price) => { this.emit("cefBuyItem", player.class, item, name, amount, price); }});
         mp.events.add({ "cefBuyItems": (player, itemArray, price) => { this.emit("cefBuyItems", player.class, itemArray, price); }});
+
+        mp.events.add({ "cefPoliceMBT_runID": (player, ID) => { this.emit("cefPoliceMBT_runID", player, ID); }});
+        mp.events.add({ "cefPoliceMBT_runPlate": (player, plate) => { this.emit("cefPoliceMBT_runPlate", player, plate); }});
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});
         // mp.events.add({ "playerExitCheckpoint": (player) => { this.emit("playerExitCheckpoint", player); }});

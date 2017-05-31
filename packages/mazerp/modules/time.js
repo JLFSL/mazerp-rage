@@ -32,24 +32,27 @@ setInterval(() => {
 
         if(pPlayer.bEmployed) {
             pPlayer.iEmploymentTime++;
-        }
 
-        //  - We should save paycheck minutes and employment time with disconnect in db, since there is the chance a player could skip payouts. 
-        //    Loading the previous minutes allows the player to receive all paychecks that were missed before tha.t
-        pPlayer.iPaycheckMinutes++;
+            if(pPlayer.iEmploymentTime >= 5) { // If time is 5 minutes, give player new employment tick, reset time for tick and add the payment he receives for that tick to the payment var.
+                pPlayer.iEmploymentTicks++;
+                pPlayer.iEmploymentTime = 0;
+                pPlayer.iPayment += pPlayer.job.payPerTick;
+            }
+        }
     }
 
     // Paycheck
     if(minutes == 40) {
         for(var pPlayer in PlayerInfo) {
-                let EmployedTicks = Math.floor(pPlayer.iEmploymentTime / 5);
-                let UnemployedTicks = Math.ceil( (pPlayer.iPaycheckMinutes - pPlayer.iEmploymentTime) / 5);
-                let Payment = (EmployedTicks * variables.economy.minimumWage) + (UnemployedTicks * variables.economy.unemployment);
+                let Payment = pPlayer.iPayment;
                 // send proper message to player that it worked n stuff
-
-                pPlayer.iBankAccount += Payment;
-                pPlayer.iEmploymentTime = 0;
-                pPlayer.iPaycheckMinutes = 0;
+                if(iEmploymentTicks > 0) {
+                    pPlayer.iBankAccount += Payment;
+                } else {
+                    pPlayer.iBankAccount += variables.economy.welfare;
+                }
+                pPlayer.iEmploymentTicks = 0;
+                pPlayer.iPayment = 0;
         }
     }
 

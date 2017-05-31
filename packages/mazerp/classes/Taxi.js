@@ -1,9 +1,8 @@
 let taxijob = module.exports;
 
 taxijob.Taxi = class CTaxi {
-    constructor(vPosition, vRotation, pDriver) {
-        this.pVehicle = mp.vehicles.new(mp.jooat("taxi"),vPosition);
-        this.pVehicle.dimension = pDriver.dimension;
+    constructor(vVehicle, pDriver) {
+        this.pVehicle = vVehicle;
         this.pDestination;
         this.pCallpoint;
         this.iFare = variables.taxi.defaultFare;

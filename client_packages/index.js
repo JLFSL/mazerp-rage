@@ -12,7 +12,6 @@ const player = mp.players.local;
 mp.events.add({
     "showUI": () => {
         browser = mp.browsers.new("http://localhost:8080");
-        player.setRunSprintMultiplierForPlayer(10.0);
     },
 
     "openLogin": () => {

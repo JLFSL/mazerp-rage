@@ -14,7 +14,7 @@ module.exports = {
             player.player.call("showUI");
 
             // Open our login
-            player.player.call("openLogin");
+            player.player.call("openMenu", "/login");
             player.setDimension(variables.dimensions.public); // for testing purposes
 
             // This will be the login page in the future.

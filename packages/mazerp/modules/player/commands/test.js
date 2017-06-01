@@ -3,7 +3,7 @@ module.exports = {
     aliases: [],
     name: "Test",
     execute: (player, message, arguments) => {
-      player.player.call("openLogin");
+      player.player.call("openMenu", "/login");
     }
   }
 }

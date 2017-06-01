@@ -14,8 +14,8 @@ mp.events.add({
         browser = mp.browsers.new("http://localhost:8080");
     },
 
-    "openLogin": () => {
-        browser.execute('window.app.history.push("/login")');
+    "openMenu": (route) => {
+        browser.execute(`window.app.history.push("${route}")`);
     },
 
     "closeMenu": () => {

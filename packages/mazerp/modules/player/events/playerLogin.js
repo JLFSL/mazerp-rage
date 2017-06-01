@@ -13,7 +13,9 @@ module.exports = {
             player.setHealth(result.health);
             player.setArmour(result.armour);
             player.setDimension(variables.dimensions.public);
-        
+
+            player.player.call("closeMenu");
+
             if (Math.round((new Date()).getTime() / 1000) - 600 > result.last_login_unix) {
                 var spawn = variables.spawn[Math.floor(Math.random() * variables.spawn.length)];
 

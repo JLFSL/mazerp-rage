@@ -21,7 +21,7 @@ mp.events.add({
 
     "closeMenu": () => {
         browser.execute('window.app.history.push("/")');
-    }
+    },
 
     "loginCamera": (value) => {
         if (value) {

@@ -1,0 +1,8 @@
+{
+	"maxplayers": 100,
+	"name": "MazeRP Development Server", 
+	"gamemode": "freeroam", 
+	"streamdistance": 500.0,
+	"announce": false,
+	"port": 22005
+}

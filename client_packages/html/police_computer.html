@@ -1,0 +1,94 @@
+<!--
+Author: Hanno 'Svvite' Grimm
+Author URI: http://svvite.net
+License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML file is limited to the use purposes of MazeRP and is not allowed to be resold to anyone..
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css\main.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
+<link rel="stylesheet" href="css\font-awesome.min.css">
+<script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
+<title>Police Computer</title>
+</head>
+
+<script>
+  var name = "";
+  var $_GET = {};
+  if(document.location.toString().indexOf('?') !== -1) {
+      var query = document.location
+                    .toString()
+                    .replace(/^.*?\?/, '')
+                    .replace(/#.*$/, '')
+                    .split('&');
+
+      for(var i=0, l=query.length; i<l; i++) {
+        var aux = decodeURIComponent(query[i]).split('=');
+        $_GET[aux[0]] = aux[1];
+      }
+  } // https://stackoverflow.com/questions/12049620/how-to-get-get-variables-value-in-javascript
+
+  name = $_GET["player"];
+  if($_GET["player"] == undefined)
+    name = "Svvite";
+  console.log(name);
+
+  jQuery(document).ready(function($) {
+
+    $(".computer-main").find("strong").html("Welcome Officer " + name);
+
+    $("#track_id").keyup(function(e) {
+      if(e.keyCode === 13) { // ENTER key
+        var ID = $(this).val();
+        mp.trigger("policeMBT_runID",ID);
+      }
+    });
+
+    $("#track_plate").keyup(function(e) {
+      if(e.keyCode === 13) { // ENTER key
+        console.log("huhu");
+      }
+    });
+
+  });
+</script>
+
+<body style="background-color: rgba(0,0,0,0);">
+<form id="police_computer">
+  <div class="col-xs-1"> </div>
+  <div class="col-xs-10">
+    <div class="announce-box">
+      <div class="announce-computer" style="margin: auto; width:70%;">
+        <div class="computer-header"> <img src="images\police-logo.png" /> <strong>LOS SANTOS POLICE DEPARTMENT</strong> <i class="fa fa-times" aria-hidden="true" id="exit"></i> </div>
+        <div class="computer-main" style="min-height: 500px;"> <strong>Welcome</strong>
+          <div style="margin-top: 55px;">
+            <div class="computer-row">
+              <div class="computer-headline-fine col-xs-2">Track ID</div>
+              <input id="track_id" name="track_id"  class="computer-input-small col-xs-4" style="width: 30% !important;" />
+              <div class="computer-headline-fine col-xs-3">Track Plate</div>
+              <input id="track_plate" name="track_plate"  class="computer-input-small col-xs-3" style="width: 20% !important;" />
+            </div>
+            <div class="computer-row"  style="margin-top: 25px;">
+              <div class="computer-headline col-xs-8" style="text-align: left; font-style: italic;">Take Actions against
+                <input name="action_user" class="computer-input" style="margin-left: 15px; padding-left: 10px;"/>
+              </div>
+              <!--<div class="col-xs-4 computer-all-warrants" id="all_warrants">All Warrants</div>-->
+            </div>
+            <div class="computer-row">
+              <div class="computer-super col-xs-12" id="currentEntries" type="submit">Active Warrants and Tickets</div>
+              <div class="computer-super col-xs-12" id="pastEntries" type="submit">Past Imprisonments / Warrants / Tickets</div>
+              <div class="computer-super col-xs-12" id="issueArrest" type="submit">Issue an arrest warrant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1"></div>
+</form>
+</body>
+</html>

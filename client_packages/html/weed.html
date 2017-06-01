@@ -1,0 +1,134 @@
+<!--
+Author: Hanno 'Svvite' Grimm
+Author URI: http://svvite.net
+License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML file is limited to the use purposes of MazeRP and is not allowed to be resold to anyone..
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css\main.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
+<link rel="stylesheet" href="css\font-awesome.min.css">
+<script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
+<title>Property</title>
+</head>
+
+<script>
+    var cultivating = false;
+    var collected = 0;
+    var collectable = 0;
+
+    var $_GET = {};
+      if(document.location.toString().indexOf('?') !== -1) {
+          var query = document.location
+                        .toString()
+                        .replace(/^.*?\?/, '')
+                        .replace(/#.*$/, '')
+                        .split('&');
+
+          for(var i=0, l=query.length; i<l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            $_GET[aux[0]] = aux[1];
+          }
+      } // https://stackoverflow.com/questions/12049620/how-to-get-get-variables-value-in-javascript
+
+  var alreadyHas = parseInt($_GET["alreadyHas"]);
+  if($_GET["alreadyHas"] == undefined) {
+    alreadyHas = 0;
+  }
+  console.log(alreadyHas);
+
+  var max = 5 - alreadyHas;
+
+  jQuery(document).ready(function($) {
+
+    if(collectable == max) {
+      $("#cultivate").removeClass("button-green").html("MAX REACHED");
+    }
+
+    $("#cultivate").click(function() {
+      if(cultivating == false && collectable < max) {
+        cultivating = true;
+
+        $(this).removeClass("button-green").addClass("button-red");
+        $(this).html("5:00");
+
+        var minutes = 5;
+        var seconds = 0;
+
+        var timer = setInterval(function() {
+          if(minutes == 0 && seconds <= 0) {
+            clearInterval(timer);
+
+            $("#cultivate").html("Cultivate").removeClass("button-red").addClass("button-green");
+            cultivating = false;
+            collectable++;
+            collected++;
+
+            updateCollectButton();
+
+            if(collectable == max || collected == max) {
+              $("#cultivate").removeClass("button-green").html("MAX REACHED");
+            }
+
+          } else {
+
+            if(seconds == 0) {
+              minutes--;
+              seconds = 59;
+            } else {
+              seconds--;
+            }
+
+            $("#cultivate").html(minutes + ":" + ("0" + seconds).slice(-2));
+          }
+        }, 10);
+      }
+    });
+
+    $("#collect").click(function() {
+      if(collectable > 0) {
+        $(this).removeClass("button-green").html("Collect Weed");
+        mp.trigger("collectWeed",collectable);
+        collectable = 0;
+      }
+    });
+
+    function updateCollectButton() {
+      if(collectable == 0) {
+        $("#collect").removeClass("button-green").html("Collect Weed");
+      } else {
+        $("#collect").addClass("button-green").html("Collect Weed (x" + collectable + ")");
+      }
+    }
+
+
+  });
+</script>
+
+<body style="background-color: rgba(0,0,0,0); overflow: hidden;">
+<form id="property">
+<div class="col-xs-3"></div>
+<div class="col-xs-9" style="padding-right: 0;">
+  <div class="announce-box" style="display: block;">
+    <div class="announce" style="position: relative; top: 75%; float: right;">
+      <div class="announce-main" style="padding: 0;">
+        <div class="col-xs-6">
+          <div class="selection-row">
+            <div class="selection-button-full button-green" id="cultivate">Cultivate</div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="selection-row">
+          	<div class="selection-button-full" id="collect">Collect Weed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

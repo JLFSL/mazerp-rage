@@ -15,6 +15,9 @@ module.exports = class Player {
         this.iJobLevel;
         this.iJobMissions;
 
+        this.inventory = {};
+        this.iWallet = 0;
+
         this.fHunger = 0.0;
         this.fThirst = 0.0;
         this.bUnconscious = false;
@@ -119,6 +122,14 @@ module.exports = class Player {
     playAnimation(dictionary, name) {
         this.player.playAnimation(name, dictionary);
         this.sendMessage(`SERVER: Playing animation <b>${name}</b> from <b>${dictionary}</b>`);
+    }
+
+    respawnByDeath(position, heading) {
+        this.player.spawn(position);
+        this.player.heading = heading;
+
+        this.inventory = {};
+        this.iWallet = 0;
     }
 
     select() {

@@ -12,6 +12,7 @@ module.exports = {
     vehicles: [],
 
 	TaxiInfo: {},
+	TaxiBranchInfo: [],
 
 	spawn: [
 		{
@@ -24,6 +25,13 @@ module.exports = {
 		}
 	],
 
+	respawnByDeath: [
+		{
+			position: new mp.Vector3(342.1229248046874, -1397.3350830078125, 32.50927734375),
+			heading: 48.86690139770508
+		}
+	],
+
 	dimensions: {
 		public: 999999990, // Public world, where all the roleplay happens.
 		event: 999999991, // World for events, to not ruin other's experience.
@@ -33,5 +41,10 @@ module.exports = {
 
 	taxi: {
 		defaultFare: 5
+	},
+
+	drugs: {
+		drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
+		drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
 	}
 };

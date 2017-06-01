@@ -2,6 +2,7 @@ let authenticationBrowser;
 let interactionMenuBrowser;
 let shopMenuBrowser;
 let policeMBT;
+let weedMenuBrowser = undefined;
 
 mp.events.add({
     "authenticationShow": () => {
@@ -51,5 +52,23 @@ mp.events.add({
 
     "policeMBT_runID": (ID) => {
         mp.events.callRemote("cefPoliceMBT_runID", ID);
+    },
+
+    "showWeedMenu": (inPossession) => {
+        if(weedMenuBrowser == undefined) {
+            weedMenuBrowser = mp.browsers.new("package://html/weed.html?alreadyHas="+inPossession);
+        } else {
+        }
+    },
+    
+    "hideWeedMenu": () => {
+        if(weedMenuBrowser != undefined) {
+            weedMenuBrowser.destroy();
+            weedMenuBrowser = undefined;
+        }
+    },
+
+    "collectWeed": (amount) => {
+        mp.events.callRemote("cefCollectWeed", amount);
     }
 });

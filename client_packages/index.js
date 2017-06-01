@@ -5,6 +5,7 @@ let policeMBT;
 let authCam;
 
 let browser;
+let weedMenuBrowser = undefined;
 
 const player = mp.players.local;
 
@@ -91,5 +92,23 @@ mp.events.add({
 
     "policeMBT_runID": (ID) => {
         mp.events.callRemote("cefPoliceMBT_runID", ID);
+    },
+
+    "showWeedMenu": (inPossession) => {
+        if(weedMenuBrowser == undefined) {
+            weedMenuBrowser = mp.browsers.new("package://html/weed.html?alreadyHas="+inPossession);
+        } else {
+        }
+    },
+
+    "hideWeedMenu": () => {
+        if(weedMenuBrowser != undefined) {
+            weedMenuBrowser.destroy();
+            weedMenuBrowser = undefined;
+        }
+    },
+
+    "collectWeed": (amount) => {
+        mp.events.callRemote("cefCollectWeed", amount);
     }
 });

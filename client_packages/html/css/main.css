@@ -35,7 +35,6 @@ div, span, strong, small {
 	.announce-computer, .window-menu {
 		width: 80% !important;
 	}
-
 }
 
 @media (max-width: 1080px) {
@@ -152,7 +151,6 @@ div, span, strong, small {
 	position: absolute;
 	top: 0;
 	right: -35px;
-
 }
 
 .selection-subheader-full {
@@ -398,7 +396,6 @@ div, span, strong, small {
 /*.button-parallelogram {
 	margin: 0 10px 0 10px !important;
 	width: 94% !important;
-
 			            transform: skewX(-5deg);
          -o-transform: skewX(-5deg);
        -moz-transform: skewX(-5deg);
@@ -473,7 +470,6 @@ div, span, strong, small {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-
 }
 
 .window-item-header {
@@ -843,7 +839,6 @@ div, span, strong, small {
 	cursor: pointer;
 	border: 1px solid #eee;
 	width: 98% !important;
-
 }
 
 .computer-all-warrants:hover, .computer-super:hover {

@@ -8,13 +8,18 @@ module.exports = {
         aliases: ["cTaxi"],
         name: "createTaxi",
         execute: (player, message) => {
-            var position = player.position;
-            position.x += 2.0;
+            for(TaxiBranch in variables.TaxiBranchInfo) {
+                player.sendMessage("" + TaxiBranch.vPosition.x);
+                if(functions.isInRangeOf(player.position, TaxiBranch.vPosition, 20)) {
+                    var position = player.position;
+                    position.x += 2.0;
 
-            var newTaxi = mp.vehicles.new(mp.joaat("taxi"),position);
-            newTaxi.dimension = player.dimension;
+                    var newTaxi = mp.vehicles.new(mp.joaat("taxi"),position);
+                    newTaxi.dimension = player.dimension;
 
-            variables.TaxiInfo[player.name] = new taxi.Taxi(newTaxi,player.player);
+                    variables.TaxiInfo[player.name] = new taxi.Taxi(newTaxi,player.player);
+                }
+            }
         }
     }
 };

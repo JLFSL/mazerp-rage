@@ -47,9 +47,13 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "playerSpawn": (player) => { this.emit("playerSpawn", player.class); }});
         mp.events.add({ "playerChat": (player, message) => { this.emit("playerChat", player.class, message); }});
         mp.events.add({ "playerCommand": (player, message) => { this.emit("playerCommand", player.class, message); }});
+        mp.events.add({ "playerEnterCheckpoint": (player, checkpoint) => {this.emit("playerEnterCheckpoint",player.class, checkpoint);}});
+        mp.events.add({ "playerEnterColshape": (player, colshape) => {this.emit("playerEnterColshape",player.class, colshape);}});
+        mp.events.add({ "playerExitColshape": (player, colshape) => {this.emit("playerExitColshape",player.class, colshape);}});
+
 
         mp.events.add({ "cefLogin": (player, result) => { this.emit("cefLogin", player.class, result); }});
-        mp.events.add({ "cefLoginDisconnect": (player) => { console.log('cefLoginDisconnect triggered'); this.emit("cefLoginDisconnect", player.class); }});
+        mp.events.add({ "cefLoginDisconnect": (player) => { this.emit("cefLoginDisconnect", player.class); }});
 
         mp.events.add({ "cefCheckWallet": (player) => { this.emit("cefCheckWallet", player.class); }});
 
@@ -58,6 +62,9 @@ module.exports = class Framework extends EventEmitter {
 
         mp.events.add({ "cefPoliceMBT_runID": (player, ID) => { this.emit("cefPoliceMBT_runID", player, ID); }});
         mp.events.add({ "cefPoliceMBT_runPlate": (player, plate) => { this.emit("cefPoliceMBT_runPlate", player, plate); }});
+
+        mp.events.add({ "cefCollectWeed": (player,amount) => { this.emit("cefCollectWeed",player.class ,amount); }});
+
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});
         // mp.events.add({ "playerExitCheckpoint": (player) => { this.emit("playerExitCheckpoint", player); }});

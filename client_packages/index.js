@@ -12,11 +12,16 @@ const player = mp.players.local;
 mp.events.add({
     "showUI": () => {
         browser = mp.browsers.new("http://localhost:8080");
+        player.setRunSprintMultiplierForPlayer(10.0);
     },
 
     "openLogin": () => {
         browser.execute('window.app.history.push("/login")');
     },
+
+    "closeMenu": () => {
+        browser.execute('window.app.history.push("/")');
+    }
 
     "loginCamera": (value) => {
         if (value) {
@@ -68,6 +73,7 @@ mp.events.add({
     "interactionMenuShow": () => {
         interactionMenuBrowser = mp.browsers.new("package://html/action_menu.html");
     },
+
     "checkWallet": () => {
         mp.events.callRemote("cefCheckWallet");
         if(interactionMenuBrowser)

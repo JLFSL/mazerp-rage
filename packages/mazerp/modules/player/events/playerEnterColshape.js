@@ -17,6 +17,13 @@ module.exports = {
                 }
             }
 
+            if(colshape.id == variables.drugs.drugSale.id) {
+                if(!player.bEmployed) {
+                    if("weedOunce" in player.inventory) {
+                    
+                } else if("weedStacks" in player.inventory) { player.sendMessage("Dawg, come back with some stuff I can work with. I need an ounce, no stacks."); }
+                }
+            }
             logger.log("debug", `${player.name} entered Colshape ID ${colshape.id}. (has ${inPossession})`);
         }
     }

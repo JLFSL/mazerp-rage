@@ -11,6 +11,7 @@ module.exports = {
 
     vehicles: [],
 
+	PlayerInfo: {},
 	TaxiInfo: {},
 	TaxiBranchInfo: [],
 
@@ -45,6 +46,7 @@ module.exports = {
 
 	drugs: {
 		drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
-		drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
+		drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50),
+		drugSale: mp.colshaps.newCircle(57.66674041748047, -1852.6238125,5)
 	}
 };

@@ -7,7 +7,7 @@ module.exports = {
         name: "cefLoginDisconnect",
         execute: (player) => {
             logger.log("debug", `cefLoginDisconnect(${player.name})`);
-            player.kick("Clicked disconnect");
+            player.player.kick("Clicked disconnect");
         }
     }
 };

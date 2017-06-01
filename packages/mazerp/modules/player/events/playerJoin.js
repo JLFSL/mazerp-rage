@@ -14,6 +14,7 @@ module.exports = {
             player.sendMessage("SERVER: Welcome to MazeRP! You must login with your forum account to continue.");
             player.setDimension(variables.dimensions.public); // for testing purposes
 
+            variables.PlayerInfo[player.player.id] = player;
             //player.player.call("authenticationShow");
         }
     }

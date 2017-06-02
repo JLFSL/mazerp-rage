@@ -51,7 +51,6 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "playerEnterColshape": (player, colshape) => {this.emit("playerEnterColshape",player.class, colshape);}});
         mp.events.add({ "playerExitColshape": (player, colshape) => {this.emit("playerExitColshape",player.class, colshape);}});
 
-
         mp.events.add({ "cefLogin": (player, result) => { this.emit("cefLogin", player.class, result); }});
         mp.events.add({ "cefLoginDisconnect": (player) => { this.emit("cefLoginDisconnect", player.class); }});
 

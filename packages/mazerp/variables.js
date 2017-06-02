@@ -49,7 +49,14 @@ module.exports = {
 	},
 
 	drugs: {
-		drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
-		drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
+		// drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
+		// drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
 	}
 };
+
+/*
+	Position for char creation area
+
+  Position: 402.9575500488281, -996.8289184570312, -99.000244140625
+  Heading: 176.65760803222656
+*/

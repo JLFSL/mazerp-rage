@@ -29,7 +29,6 @@ mp.events.add({
 
     "startHaircut": () => {
         player.freezePosition(true);
-        player.position = new mp.Vector3(-1772, -1186, 10);
     },
 
     "loginCamera": (value) => {
@@ -69,7 +68,6 @@ mp.events.add({
     "setRot": (value) => {
         value = value + 0.0;
         player.setRotation(0.0, 0.0, value, 0, false);
-        player.freezePosition(true);
     },
 
     "authenticationLogin": result => {

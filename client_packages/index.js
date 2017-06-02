@@ -39,6 +39,7 @@ mp.events.add({
             player.freezePosition(true);
             player.position = new mp.Vector3(-1772, -1186, 10);
 
+            mp.game.ui.displayHud(false);
             mp.game.cam.renderScriptCams(true, false, 3000, true, false);
             mp.game.controls.disableAllControlActions(32);
         } else {
@@ -49,6 +50,7 @@ mp.events.add({
 
             player.freezePosition(false);
 
+            mp.game.ui.displayHud(true);
             mp.game.cam.renderScriptCams(false, false, 3000, true, false);
             mp.game.graphics.stopScreenEffect('SwitchHUDIn');
             mp.game.controls.enableAllControlActions(32);

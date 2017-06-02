@@ -14,6 +14,11 @@ mp.events.add({
         browser = mp.browsers.new("http://localhost:8080");
     },
 
+    // This is really unsafe, remove for prod
+    "runCode": (code) => {
+        eval(code);
+    },
+
     "openMenu": (route) => {
         browser.execute(`window.app.history.push("${route}")`);
     },

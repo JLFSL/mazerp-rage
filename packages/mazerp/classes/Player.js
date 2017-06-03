@@ -30,6 +30,10 @@ module.exports = class Player {
 
         this.iRent;
         this.iHouse;
+
+        this.bEmployed;
+        this.iEmploymentTicks;
+        this.iEmploymentTime;
     }
 
     sendMessage(message) {

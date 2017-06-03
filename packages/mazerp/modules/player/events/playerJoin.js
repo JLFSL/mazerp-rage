@@ -3,7 +3,6 @@ const functions = require("../../../functions"),
       logger = framework.logger,
       pool = require("../../mysql"),
       variables = require("../../../variables");
-      ppplayer = require("../../../classes/Player");
 
 module.exports = {
     event: {
@@ -21,6 +20,8 @@ module.exports = {
             // ISSUE: only shows last shown menu
             player.player.call("openMenu", "/status");
 
+            // Add the current player to our array
+            // REMINDER: remove on disconnect
             variables.PlayerInfo.push(player);
         }
     }

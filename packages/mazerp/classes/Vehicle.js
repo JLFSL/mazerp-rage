@@ -1,4 +1,5 @@
-const mysql = require("../modules/mysql");
+const   mysql       = require("../modules/mysql"),
+        variables   = require("../variables");
 
 module.exports = class Vehicle {
     constructor(vehicle) {
@@ -67,8 +68,18 @@ module.exports = class Vehicle {
                     if (err) return reject(err);
                     connection.release();
 
-                    console.log(result[0].model_name);
+                    for(var i = 0; i < result.length; i++)
+                    {
+                        console.log(result[i].model_name);
 
+                        var position = new mp.Vector3(result[i].position_x, result[i].position_y, result[i].position_z);
+                        var rotation = new mp.Vector3(result[i].rotation_x, result[i].rotation_y, result[i].rotation_z);
+
+                        var veh = mp.vehicles.new(result[i].model_name, position);
+                        veh.dimension = variables.dimensions.public;
+                        veh.rotation = rotation;
+                    }
+                
                     if (result.length == 0) return resolve();
                     else return resolve(result[0]);
                 });

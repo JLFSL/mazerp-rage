@@ -148,6 +148,10 @@ mp.events.add({
         shopMenuBrowser = mp.browsers.new("package://html/shop.html");
     },
 
+    "hideShop": () => {
+        shopMenuBrowser.destroy();
+    },
+
     "shopBuyItem": (item, name, amount, price) => {
         mp.events.callRemote("cefBuyItem", item, name, amount, price);
     },
@@ -182,9 +186,15 @@ mp.events.add({
         mp.events.callRemote("cefCollectWeed", amount);
     },
 
-    "showInventory": (inventory) => {
-        inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + JSON.stringify(inventory));
+    "showInventory": (inventory, itemInfo) => { // INVENTORY HAS TO BE STRINGIFIED! -> otherwise crashing GTA 5
+        inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + inventory + "&itemInformation=" + itemInfo);
+    }, // passing the whole itemInfo.js via $_GET as well as the inventory is super primitive and needs to be overworked -Svvite.
+    
+    "hideInventory": () => {
+        inventoryBrowser.destroy();
     }
+
+
 });
 
 mp.keys.bind(0x49, true, () => mp.player.call("showInventory"));

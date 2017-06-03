@@ -12,12 +12,12 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 <link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
 <link rel="stylesheet" href="css\font-awesome.min.css">
-<script type="text/javascript" src="..\itemInfo.js"></script>
 <script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="..\itemInfo.js"></script>
 <title>Shop Menu</title>
 </head>
 <script>
-  var inventory;
+  var inventory = {};
   var itemInfo = {};
 
       var $_GET = {};
@@ -33,7 +33,8 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
             $_GET[aux[0]] = aux[1];
           }
       } // https://stackoverflow.com/questions/12049620/how-to-get-get-variables-value-in-javascript
-
+  
+  var itemInfo = JSON.parse($_GET["itemInformation"]);
 
   if($_GET["inventory"] == undefined) {
     inventory = {"weedStacks":{"amount":4}};
@@ -47,14 +48,13 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 
   jQuery(document).ready(function($) {
 
-      var itemInfo = itemInformation;
-
       for(var i = 1; i<=maxPages; i++) {
 
 
         var newWindowMain = $(document.createElement("div")).addClass("window-main").hide().appendTo(".window-menu").attr("data-num",i);
-        for(var k=0; k<(amountOfItems - 4*(i-1)); k++) {
-          var key = Object.keys(inventory)[k*i];
+        var kStart = (0 + (4*(i-1)))
+        for(var k = kStart; k< (kStart+4); k++) {
+          var key = Object.keys(inventory)[k];
           if(!(key in itemInfo)) { continue; }
           var item = inventory[key];
 
@@ -82,17 +82,28 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 
        $(".window-main[data-num=1]").show();
 
+      $(document).keyup(function(e) {
+        if(e.keyCode==27) { mp.trigger("hideInventory"); }
+      });
+
+      $("a").click(function() {
+        var page = $(this).data("page");
+        $(".window-main").each(function() {
+          $(this).hide();
+        });
+
+        $(".window-main[data-num=" + page + "]").show();
+      });
   });
 
 
 </script>
 <body style="background-color: rgba(0,0,0,0); overflow: hidden;">
 <form id="inventory">
-  <div class="col-xs-4 col-xs-offset-8">
-  <div class="announce-box">
-    <div class="window-menu">
+  <div class="col-xs-4 col-xs-offset-8" style="position: relative; margin-right: 10%;">
+  <div class="announce-box" style="display: block; margin-top: 10%;">
+    <div class="window-menu" style="position: relative; top: 0; float: right; margin-right: 10%;">
       <div class="window-header" style="padding: 0; text-align: center;">Inventory</div>
-        
 
 
     </div>

@@ -15,7 +15,7 @@ class LoginRoute extends Component {
   }
 
   handleExit() {
-    // router.push('/');
+    window.app.history.push("/");
   }
 
   render() {

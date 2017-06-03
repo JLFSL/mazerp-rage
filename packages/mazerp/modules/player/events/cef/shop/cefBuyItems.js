@@ -12,7 +12,10 @@ module.exports = {
                     let name = cart[itemName]["name"];
                     let item = cart[itemName]["item"];
                     
-                    player.inventory[name] += amount;
+                    if(player.inventory[item] == null) {player.inventory[item] = {};}
+                    if(player.inventory[item]["amount"] == null) {player.inventory[item]["amount"] = 0;}
+
+                    player.inventory[item]["amount"] += amount;
 
                     player.sendMessage("You bought " + name + " (x" + amount + ") for " + cart[itemName]["price"] + "$.");
                 }

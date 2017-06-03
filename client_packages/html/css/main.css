@@ -452,7 +452,7 @@ div, span, strong, small {
 }
 
 .window-main {
-	height: 330px;
+	height: 264px;
 	background-color: rgba(17, 17, 17, 0.85);
 	margin: auto;
 	overflow: auto;

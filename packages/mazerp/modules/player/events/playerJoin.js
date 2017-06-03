@@ -15,13 +15,9 @@ module.exports = {
 
             // Open our login
             player.player.call("openMenu", "/login");
-            player.setDimension(variables.dimensions.public); // for testing purposes
+            player.setDimension(variables.dimensions.noLogin); // for testing purposes
 
             variables.PlayerInfo[player.player.id] = player;
-            //player.player.call("authenticationShow");
-            // This will be the login page in the future.
-            // player.sendMessage("SERVER: Welcome to MazeRP! You must login with your forum account to continue.");
-            // player.player.call("authenticationShow");
         }
     }
 };

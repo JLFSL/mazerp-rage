@@ -3,6 +3,7 @@ const functions = require("../../../functions"),
       logger = framework.logger,
       pool = require("../../mysql"),
       variables = require("../../../variables");
+      ppplayer = require("../../../classes/Player");
 
 module.exports = {
     event: {
@@ -17,7 +18,10 @@ module.exports = {
             player.player.call("openMenu", "/login");
             player.setDimension(variables.dimensions.noLogin); // for testing purposes
 
-            variables.PlayerInfo[player.player.id] = player;
+            // ISSUE: only shows last shown menu
+            player.player.call("openMenu", "/status");
+
+            variables.PlayerInfo.push(player);
         }
     }
 };

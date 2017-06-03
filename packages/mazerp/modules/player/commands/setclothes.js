@@ -3,9 +3,9 @@ const functions = require("../../../functions");
 module.exports = {
     command: {
         aliases: [],
-        name: "setclothes",
+        name: "setClothes",
         execute: (player, message, arguments) => {
-            if (arguments.length < 2) return player.sendMessage("The usage for that command is (/setClothes [modelname])");
+            if (arguments.length < 2) return player.sendMessage("The usage for that command is (/setclothes [modelname])");
 
             console.log(player.player.getClothes(parseInt(arguments[1])));
 

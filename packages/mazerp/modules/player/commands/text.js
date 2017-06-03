@@ -1,7 +1,6 @@
 const functions = require("../../../functions");
 const variables = require("../../../variables");
 
-
 module.exports = {
     command: {
         aliases: [],
@@ -11,12 +10,11 @@ module.exports = {
 
             let number = arguments[1];
             let toSend = "";
-            for(let i=2; i<arguments.length; i++) {
+            for(let i = 2; i < arguments.length; i++) {
                 toSend += " " + arguments[i];
             }
 
             let bFound = false;
-
 
             for(playerKey in variables.PlayerInfo) {
                 let pPlayer = variables.PlayerInfo[playerKey];

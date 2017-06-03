@@ -10,6 +10,11 @@ const categoryList = [
   { id: 6, name: 'Feet' }
 ];
 
+const playerModels = {
+  male: 'mp_m_freemode_01',
+  female: 'mp_f_freemode_01'
+};
+
 class CreationRoute extends Component {
   constructor(props) {
     super(props);
@@ -35,25 +40,26 @@ class CreationRoute extends Component {
     this.handleGender = this.handleGender.bind(this);
     this.handleCatUp = this.handleCatUp.bind(this);
     this.handleCatDown = this.handleCatDown.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillMount() {
-    document.onkeydown = this.handleKeyPress;
     mp.trigger('toggleChat', false);
+    mp.trigger('charCreation', true);
   }
 
   componentWillUnmount() {
-    document.onkeydown = null;
     mp.trigger('toggleChat', true);
+    mp.trigger('charCreation', false);
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleGender(value) {
-    this.setState({ gender: value });
+  handleGender(gender) {
+    this.setState({ gender: playerModels[gender] });
+
+    mp.trigger('updatePlayerModel', playerModels[gender]);
   }
 
   handleCatUp(cat) {
@@ -70,34 +76,11 @@ class CreationRoute extends Component {
     mp.trigger('updateChar', cat, (categories[cat]-1));
   }
 
-  handleKeyPress(e) {
-    const { rotation } = this.state;
-    var newRot = rotation;
-
-    if (e.key === 'ArrowLeft') {
-      newRot -= 10;
-    }
-
-    if (e.key === 'ArrowRight') {
-      newRot += 10;
-    }
-
-    if (newRot > 360) {
-      newRot = 0;
-    } else if (newRot < 0) {
-      newRot = 360;
-    }
-
-    this.setState({ rotation: newRot });
-    console.log(newRot);
-    mp.trigger('setRot', newRot);
-  }
-
   render() {
     const { first, last } = this.state;
 
     return (
-      <div style={{ width: '100%', height: '100%;' }} onKeyDown={this.handleKeyPress}>
+      <div style={{ width: '100%', height: '100%;' }}>
         <form id="character_creation">
           <div class="col-xs-2 menu-slim" style={{ right: '-35px', 'padding-left': '0px' }}>
             <div class="menu-header">
@@ -113,9 +96,9 @@ class CreationRoute extends Component {
               <div class="col-xs-12"  style={{ 'margin-top': '15px' }}></div>
               <div class="sub-header">Overall</div>
               <div class="selection-row cc-row row">
-                <div class="selection-button-left" onClick={() => { this.handleGender(0); }}><i class="fa fa-male" aria-hidden="true"></i></div>
+                <div class="selection-button-left" onClick={() => { this.handleGender('male'); }}><i class="fa fa-male" aria-hidden="true"></i></div>
                 <div class="selection-caption">Gender</div>
-                <div class="selection-button-right" onClick={() => { this.handleGender(1); }}><i class="fa fa-female" aria-hidden="true"></i></div>
+                <div class="selection-button-right" onClick={() => { this.handleGender('female'); }}><i class="fa fa-female" aria-hidden="true"></i></div>
               </div>
 
               {categoryList.map((cat) => (

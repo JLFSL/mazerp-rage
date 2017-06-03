@@ -2,8 +2,8 @@ let authenticationBrowser;
 let interactionMenuBrowser;
 let shopMenuBrowser;
 let policeMBT;
-let authCam;
 let inventoryBrowser;
+let camera;
 
 let browser;
 let weedMenuBrowser = undefined;
@@ -34,8 +34,8 @@ mp.events.add({
 
     "loginCamera": (value) => {
         if (value) {
-            authCam = mp.cameras.new('default', new mp.Vector3(-1772, -1186, 18), new mp.Vector3(0, 0, 276), 45);
-            authCam.setActive(true);
+            camera = mp.cameras.new('default', new mp.Vector3(-1772, -1186, 18), new mp.Vector3(0, 0, 276), 45);
+            camera.setActive(true);
 
             player.freezePosition(true);
             player.position = new mp.Vector3(-1772, -1186, 10);
@@ -44,9 +44,9 @@ mp.events.add({
             mp.game.cam.renderScriptCams(true, false, 3000, true, false);
             mp.game.controls.disableAllControlActions(32);
         } else {
-            if (authCam) {
-                authCam.destroy();
-                authCam = undefined;
+            if (camera) {
+                camera.destroy();
+                camera = undefined;
             }
 
             player.freezePosition(false);
@@ -58,9 +58,51 @@ mp.events.add({
         }
     },
 
+    "loginResponse": (success, error = '') => {
+        browser.execute(`window.app.loginResponse(${success}, "${error}")`);
+    },
+
     "updateChar": (cat, value) => {
         browser.execute(`console.log('value: ${cat} ${value}')`);
         player.setComponentVariation(cat, value, 0, 0);
+    },
+
+    "updatePlayerModel": (model) => {
+        player.model = mp.game.joaat(model);
+    },
+
+    "charCreation": (value) => {
+        if (value) {
+            browser.execute('window.app.history.push("/custom/create")');
+            if (camera) {
+                camera.destroy();
+                camera = undefined;
+            }
+
+            // TODO: Enable camera
+            camera = mp.cameras.new('default', new mp.Vector3(403, -999, -99), new mp.Vector3(0, 0, 0), 75);
+            camera.setActive(true);
+
+            player.taskPlayAnim("mp_character_creation@customise@male_a", "drop_loop", 1, 0, 1, 1, 1, true, true, true);
+            player.setRotation(0.0, 0.0, 180, 0, false);
+
+            player.freezePosition(true);
+            mp.game.cam.renderScriptCams(true, false, 3000000, true, false);
+            mp.game.controls.disableAllControlActions(32);
+        } else {
+            // TODO: Delete Camera
+            if (camera) {
+                camera.destroy();
+                camera = undefined;
+            }
+
+            player.freezePosition(false);
+
+            mp.game.ui.displayHud(true);
+            mp.game.cam.renderScriptCams(false, false, 3000, true, false);
+            mp.game.graphics.stopScreenEffect('SwitchHUDIn');
+            mp.game.controls.enableAllControlActions(32);
+        }
     },
 
     "toggleChat": (value) => {

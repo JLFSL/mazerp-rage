@@ -35,18 +35,17 @@ div, span, strong, small {
 	.announce-computer, .window-menu {
 		width: 80% !important;
 	}
-	
 }
 
 @media (max-width: 1080px) {
 	.menu {
 		width: 50% !important;
 	}
-	
+
 	.announce-computer, .window-menu {
 		width: 100% !important;
 	}
-	
+
 }
 
 @media (max-width: 1400px) {
@@ -65,24 +64,24 @@ div, span, strong, small {
 	.announce {
 		width: 60% !important;
 	}
-	
+
 	.announce-computer, {
 		width: 110% !important;
 	}
-	
+
 	.window-row {
 		border-left: 0 !important;
 	}
-	
+
 	.window-amount-button {
 		font-size: 10px;
 		width: 12px !important;
 	}
-	
+
 	.computer-main strong {
 		font-size: 34px !important;
 	}
-	
+
 	.computer-all-warrants {
 		font-size: 13px !important;
 	}
@@ -152,7 +151,6 @@ div, span, strong, small {
 	position: absolute;
 	top: 0;
 	right: -35px;
-	
 }
 
 .selection-subheader-full {
@@ -174,7 +172,7 @@ div, span, strong, small {
 .selection-simple {
 	color: #fff;
 	font-size: 13px;
-	text-align: center;	
+	text-align: center;
 	cursor: pointer;
 	height: 30px;
 	line-height: 30px;
@@ -188,7 +186,7 @@ div, span, strong, small {
 .selection-cloth-shop {
 	color: #fff;
 	font-size: 13px;
-	text-align: left;	
+	text-align: left;
 	cursor: pointer;
 	height: 30px;
 	line-height: 30px;
@@ -398,7 +396,6 @@ div, span, strong, small {
 /*.button-parallelogram {
 	margin: 0 10px 0 10px !important;
 	width: 94% !important;
-	
 			            transform: skewX(-5deg);
          -o-transform: skewX(-5deg);
        -moz-transform: skewX(-5deg);
@@ -473,7 +470,6 @@ div, span, strong, small {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	
 }
 
 .window-item-header {
@@ -681,7 +677,7 @@ div, span, strong, small {
 
 .announce-main {
 	min-height: 50px;
-	padding-top: 15px; 
+	padding-top: 15px;
 	padding-bottom: 0px;
 	background-color: 	rgba(34, 34, 34, 0.8);
 	font-size: 15px;
@@ -842,7 +838,6 @@ div, span, strong, small {
 	cursor: pointer;
 	border: 1px solid #eee;
 	width: 98% !important;
-	
 }
 
 .computer-all-warrants:hover, .computer-super:hover {

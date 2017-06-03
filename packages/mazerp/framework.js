@@ -39,7 +39,7 @@ module.exports = class Framework extends EventEmitter {
             player.class = new Player(player);
             this.emit("playerJoin", player.class);
         }});
-        
+
         mp.events.add({ "playerQuit": (player, exitType, reason) => { this.emit("playerQuit", player.class, exitType, reason); }});
         mp.events.add({ "playerDeath": (player, reason, killer) => { this.emit("playerDeath", player.class, reason, killer); }});
         mp.events.add({ "playerEnterVehicle": (player, vehicle, seat) => { this.emit("playerEnterVehicle", player.class, vehicle, seat); }});
@@ -53,7 +53,6 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "playerEnterColshape": (player, colshape) => {this.emit("playerEnterColshape",player.class, colshape);}});
         mp.events.add({ "playerExitColshape": (player, colshape) => {this.emit("playerExitColshape",player.class, colshape);}});
 
-
         mp.events.add({ "cefLogin": (player, result) => { this.emit("cefLogin", player.class, result); }});
         mp.events.add({ "cefLoginDisconnect": (player) => { this.emit("cefLoginDisconnect", player.class); }});
 
@@ -66,6 +65,7 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "cefPoliceMBT_runPlate": (player, plate) => { this.emit("cefPoliceMBT_runPlate", player.class, plate); }});
 
         mp.events.add({ "cefCollectWeed": (player,amount) => { this.emit("cefCollectWeed",player.class ,amount); }});
+
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});
         // mp.events.add({ "playerExitCheckpoint": (player) => { this.emit("playerExitCheckpoint", player); }});
@@ -117,7 +117,7 @@ module.exports = class Framework extends EventEmitter {
     }
 
     unload(type, id) {
-        
+
     }
 
     reload(type, id) {

@@ -11,10 +11,10 @@ module.exports = {
         aliases: [],
         name: "Login",
         execute: (player, message, arguments) => {
-            if (player.logged_in) 
+            if (player.logged_in)
                 return player.sendMessage("SERVER: You are already logged in.");
-                
-            else if (arguments.length < 3) 
+
+            else if (arguments.length < 3)
                 return player.sendMessage("The usage for that command is (/login [email] [password]).");
 
             superagent

@@ -9,11 +9,16 @@ module.exports = {
 		players: 100
 	},
 
-    vehicles: [],
+  vehicles: [],
 
 	PlayerInfo: {},
 	TaxiInfo: {},
 	TaxiBranchInfo: [],
+
+	loginCamera: {
+		position: new mp.Vector3(-1772.4903564453125, -1166.7955322265625, 13.017889976501465),
+		heading: 276.3242492675781
+	},
 
 	spawn: [
 		{
@@ -45,8 +50,20 @@ module.exports = {
 	},
 
 	drugs: {
+<<<<<<< HEAD
 		drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
 		drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50),
 		drugSale: mp.colshaps.newCircle(57.66674041748047, -1852.6238125,5)
+=======
+		// drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
+		// drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
+>>>>>>> 3ddfee95b1e7468cac8122d422806dba0e912fff
 	}
 };
+
+/*
+	Position for char creation area
+
+  Position: 402.9575500488281, -996.8289184570312, -99.000244140625
+  Heading: 176.65760803222656
+*/

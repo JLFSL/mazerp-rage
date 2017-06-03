@@ -9,7 +9,6 @@ module.exports = class Player {
         this.iCash;
         this.iBankAccount;
         this.stLastPaycheck;
-        
         this.pJob;
         this.sJobName;
         this.iJobLevel;

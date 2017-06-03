@@ -2,19 +2,74 @@ let authenticationBrowser;
 let interactionMenuBrowser;
 let shopMenuBrowser;
 let policeMBT;
+let authCam;
+
+let browser;
 let weedMenuBrowser = undefined;
 
+const player = mp.players.local;
+
 mp.events.add({
-    "authenticationShow": () => {
-        authenticationBrowser = mp.browsers.new("package://html/login.html");
-        mp.game.controls.disableAllControlActions(32);
+    "showUI": () => {
+        browser = mp.browsers.new("http://localhost:8080");
     },
 
-    "authenticationHide": () => {
-        if(authenticationBrowser)
-            authenticationBrowser.destroy();
-            
-        mp.game.controls.enableAllControlActions(32);
+    // This is really unsafe, remove for prod
+    "runCode": (code) => {
+        eval(code);
+    },
+
+    "openMenu": (route) => {
+        browser.execute(`window.app.history.push("${route}")`);
+    },
+
+    "closeMenu": () => {
+        browser.execute('window.app.history.push("/")');
+    },
+
+    "startHaircut": () => {
+        player.freezePosition(true);
+    },
+
+    "loginCamera": (value) => {
+        if (value) {
+            authCam = mp.cameras.new('default', new mp.Vector3(-1772, -1186, 18), new mp.Vector3(0, 0, 276), 45);
+            authCam.setActive(true);
+
+            player.freezePosition(true);
+            player.position = new mp.Vector3(-1772, -1186, 10);
+
+            mp.game.ui.displayHud(false);
+            mp.game.cam.renderScriptCams(true, false, 3000, true, false);
+            mp.game.controls.disableAllControlActions(32);
+        } else {
+            if (authCam) {
+                authCam.destroy();
+                authCam = undefined;
+            }
+
+            player.freezePosition(false);
+
+            mp.game.ui.displayHud(true);
+            mp.game.cam.renderScriptCams(false, false, 3000, true, false);
+            mp.game.graphics.stopScreenEffect('SwitchHUDIn');
+            mp.game.controls.enableAllControlActions(32);
+        }
+    },
+
+    "updateChar": (cat, value) => {
+        browser.execute(`console.log('value: ${cat} ${value}')`);
+        player.setComponentVariation(cat, value, 0, 0);
+    },
+
+    "toggleChat": (value) => {
+        mp.gui.chat.activate(value);
+        mp.gui.execute(`mp.invoke("focus", ${!value})`);
+    },
+
+    "setRot": (value) => {
+        value = value + 0.0;
+        player.setRotation(0.0, 0.0, value, 0, false);
     },
 
     "authenticationLogin": result => {
@@ -28,6 +83,7 @@ mp.events.add({
     "interactionMenuShow": () => {
         interactionMenuBrowser = mp.browsers.new("package://html/action_menu.html");
     },
+
     "checkWallet": () => {
         mp.events.callRemote("cefCheckWallet");
         if(interactionMenuBrowser)
@@ -60,7 +116,7 @@ mp.events.add({
         } else {
         }
     },
-    
+
     "hideWeedMenu": () => {
         if(weedMenuBrowser != undefined) {
             weedMenuBrowser.destroy();

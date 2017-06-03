@@ -11,9 +11,9 @@ module.exports = {
             for(TaxiBranch in variables.TaxiBranchInfo) {
                 player.sendMessage("" + TaxiBranch.vPosition.x);
                 if(functions.isInRangeOf(player.position, TaxiBranch.vPosition, 20)) {
-                    var position = player.position; 
+                    var position = player.position;
                     position.x += 2.0;
-                    
+
                     var newTaxi = mp.vehicles.new(mp.joaat("taxi"),position);
                     newTaxi.dimension = player.dimension;
 

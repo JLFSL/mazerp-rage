@@ -1,5 +1,3 @@
-const variables = require("../variables");
-
 var time = 21600, // Start the clock at 6am
     minutes = 0;
 
@@ -7,19 +5,17 @@ mp.environment.time.hour = Math.floor(time / (60 * 60));
 mp.environment.time.minute = Math.floor((time % (60 * 60)) / 60);
 mp.environment.time.second = Math.floor((time % (60 * 60) / 60) % 60);
 
-
-
 setInterval(() => {
     // World Time
     minutes += 1;
     if (minutes >= 60) {
-        minutes = 0; 
+        minutes = 0;
         time = 21600;
     }
-    
+
     if (minutes <= 45) time += 1120;
     else time += 1200;
-    
+
     if (time >= 86400) time -= 86400;
 
     mp.environment.time.hour = Math.floor(time / (60 * 60));
@@ -31,16 +27,6 @@ setInterval(() => {
     for(var pPlayer in PlayerInfo) {
         pPlayer.hunger += 1.66667;
         pPlayer.thirst += 1.66667;
-
-        if(pPlayer.bUnconscious) {
-            pPlayer.iUnconsciousTime++;
-            if(iUnconsciousTime >= 10) {
-                pPlayer.respawn(variables.respawnByDeath.position, variables.respawnByDeath.heading);
-                
-                pPlayer.player.sendMessage("You were unconscious for too long and died.");
-                pPlayer.player.sendMessage("The ambulance was able to revive you in the hospital but was unable to find your valuables during their operation.");
-            }
-        }
 
         if(pPlayer.bEmployed) {
             pPlayer.iEmploymentTime++;
@@ -67,6 +53,4 @@ setInterval(() => {
                 pPlayer.iPayment = 0;
         }
     }
-
-    
 }, 60000);

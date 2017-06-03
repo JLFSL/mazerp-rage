@@ -641,6 +641,26 @@ div, span, strong, small {
 	top: -1px;
 }
 
+.window-pagination>li>a, .window-pagination>li>span {
+	background-color: rgba(30, 30, 30, 1) !important;
+	color: #fff !important;
+	border: 1px solid #333!important;
+	margin-top: 5px;
+}
+
+.window-pagination>li {
+		display: inline-block !important;
+}
+
+.window-pagination {
+	background-color: rgba(17, 17, 17, 0.85);
+	text-align: center;
+	height: 45px;
+	margin: 0 !important;
+	border-radius: 0 !important;
+	width: 100%;
+}
+
 .announce-box {
 	height: 100%;
 	display: flex;

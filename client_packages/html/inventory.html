@@ -1,0 +1,77 @@
+<!--
+Author: Hanno 'Svvite' Grimm
+Author URI: http://svvite.net
+License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML file is limited to the use purposes of MazeRP and is not allowed to be resold to anyone..
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css\main.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
+<link rel="stylesheet" href="css\font-awesome.min.css">
+<script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
+<title>Shop Menu</title>
+</head>
+<script>
+  var inventory = {"weedStacks":{"amount":1}};
+  var amountOfItems = Object.keys(inventory).length;
+  var maxPages = Math.ceil(amountOfItems / 4);
+
+  var itemInfo = {};
+
+  jQuery(document).ready(function($) {
+
+      var itemInfo = $.getJSON("../itemInfo.json");
+      console.log(itemInfo);
+
+      for(var i = 1; i<=maxPages; i++) { 
+
+        var newWindowMain = $(document.createElement("div")).addClass("window-main").hide().appendTo(".window-menu").attr("data-num",i);
+        for(var k=0; k<(amountOfItems - 4*(i-1)); k++) {
+          var key = Object.keys(inventory)[k*i];
+          var item = inventory[key];
+
+          var newWindowRow = $(document.createElement("div")).addClass("window-row row").appendTo($(newWindowMain));
+          var newWindowItem = $(document.createElement("div")).addClass("col-xs-8 window-item").appendTo($(newWindowRow));
+          var newWindowHeader = $(document.createElement("div")).addClass("window-item-header").html(itemInfo[key]["name"]).appendTo($(newWindowItem));
+          var description = $(newWindowItem).html(itemInfo[key]["description"]);
+
+          var newWindowValue = $(document.createElement("div")).addClass("col-xs-2 window-value").html("x" + item["amount"]).appendTo($(newWindowRow));
+          var newWindowButton = $(document.createElement("div")).addClass("col-xs-2 window-purchase").appendTo($(newWindowRow)).attr("data-propername",itemInfo[key]["name"]).attr("data-amount",item["amount"]).attr("data-item",key);
+        }
+      }
+
+       // pagination 
+       var newPagination = $(document.createElement("ul")).addClass("window-pagination pagination").appendTo(".window-menu");
+       for(var i=1; i<=maxPages; i++) {     
+          var newPage = document.createElement("li");
+          var newA = document.createElement("a");
+          $(newA).attr("data-page",i).html(i).appendTo(newPage);
+          $(newPage).appendTo($(".window-pagination"));
+       }
+
+
+
+  });
+
+
+</script>
+<body style="background-color: rgba(0,0,0,0); overflow: hidden;">
+<form id="inventory">
+  <div class="col-xs-4 col-xs-offset-8">
+  <div class="announce-box">
+    <div class="window-menu">
+      <div class="window-header" style="padding: 0; text-align: center;">Inventory</div>
+        
+
+
+    </div>
+  </div>
+  </div>
+  </div>
+</form>
+</body>
+</html>

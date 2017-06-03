@@ -126,5 +126,11 @@ mp.events.add({
 
     "collectWeed": (amount) => {
         mp.events.callRemote("cefCollectWeed", amount);
+    },
+
+    "showInventory": () => {
+        inventoryBrowser = mp.browsers.new("package://html/inventory.html");
     }
 });
+
+mp.keys.bind(0x49, true, () => mp.player.call("showInventory"));

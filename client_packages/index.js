@@ -197,4 +197,3 @@ mp.events.add({
 
 });
 
-mp.keys.bind(0x49, true, () => mp.player.call("showInventory"));

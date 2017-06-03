@@ -3,7 +3,7 @@ const mysql = require("../../mysql");
 
 module.exports = {
     command: {
-        aliases: ["sVeh"],
+        aliases: ["saveveh"],
         name: "saveVehicle",
         execute: (player, message, arguments) => {
             let factionID;

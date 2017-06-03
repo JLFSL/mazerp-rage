@@ -22,6 +22,7 @@ module.exports = {
                 .send({ email: arguments[1] })
                 .send({ password: arguments[2] })
                 .then((result) => {
+
                     if (result.body.status !== "success") return player.sendMessage("SERVER: Could not login to your forum account. Did you fill in the right details and are you whitelisted as a <b>civilian</b>?");
                     player.sendMessage("SERVER: You have successfully logged into your account.");
 

@@ -120,8 +120,8 @@ module.exports = class Player {
         this.player.heading = heading;
     }
 
-    playAnimation(dictionary, name) {
-        this.player.playAnimation(name, dictionary);
+    playAnimation(dictionary, name, speed = 1, flag = 1) {
+        this.player.playAnimation(dictionary, name, parseFloat(speed), parseInt(flag));
         this.sendMessage(`SERVER: Playing animation <b>${name}</b> from <b>${dictionary}</b>`);
     }
 

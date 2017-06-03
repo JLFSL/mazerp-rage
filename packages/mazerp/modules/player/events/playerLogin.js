@@ -17,8 +17,8 @@ module.exports = {
             player.player.call("closeMenu");
 
             if (Math.round((new Date()).getTime() / 1000) - 600 > result.last_login_unix) {
-                var spawn = variables.spawn[Math.floor(Math.random() * variables.spawn.length)];
 
+                var spawn = variables.spawn[Math.floor(Math.random() * variables.spawn.length)];
                 player.spawn(spawn.position.x, spawn.position.y, spawn.position.z, spawn.heading);
             } else player.spawn(result.position_x, result.position_y, result.position_z, result.heading);
 

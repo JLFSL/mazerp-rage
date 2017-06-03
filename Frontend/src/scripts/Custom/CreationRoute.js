@@ -41,11 +41,13 @@ class CreationRoute extends Component {
   componentWillMount() {
     document.onkeydown = this.handleKeyPress;
     mp.trigger('toggleChat', false);
+    mp.trigger('charCreation', true);
   }
 
   componentWillUnmount() {
     document.onkeydown = null;
     mp.trigger('toggleChat', true);
+    mp.trigger('charCreation', false);
   }
 
   handleChange(e) {
@@ -75,11 +77,11 @@ class CreationRoute extends Component {
     var newRot = rotation;
 
     if (e.key === 'ArrowLeft') {
-      newRot -= 10;
+      newRot -= 5;
     }
 
     if (e.key === 'ArrowRight') {
-      newRot += 10;
+      newRot += 5;
     }
 
     if (newRot > 360) {
@@ -89,8 +91,9 @@ class CreationRoute extends Component {
     }
 
     this.setState({ rotation: newRot });
-    console.log(newRot);
     mp.trigger('setRot', newRot);
+
+    return e;
   }
 
   render() {

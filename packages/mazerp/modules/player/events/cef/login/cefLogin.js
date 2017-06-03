@@ -9,7 +9,6 @@ module.exports = {
         name: "cefLogin",
         execute: (player, result) => {
             const parseData = JSON.parse(result);
-            logger.log("debug", `cefLogin(${player.name}): ${parseData.email}, ${parseData.password}.`);
 
             if (player.logged_in)
                 return player.sendMessage("SERVER: You are already logged in.");

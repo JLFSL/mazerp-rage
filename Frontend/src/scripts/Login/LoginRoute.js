@@ -49,7 +49,7 @@ class LoginRoute extends Component {
 
   disconnect() {
     window.app.history.push("/");
-    // mp.trigger('cefLoginDisconnect');
+    mp.trigger('cefLoginDisconnect');
   }
 
   handleChange(e) {

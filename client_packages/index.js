@@ -67,13 +67,24 @@ mp.events.add({
         player.setComponentVariation(cat, value, 0, 0);
     },
 
+    "updateFace": (index, scale) => {
+        browser.execute(`console.log('value: ${index} ${scale}')`);
+        player.setFaceFeature(parseInt(index), parseFloat(scale));
+    },
+
     "updatePlayerModel": (model) => {
         player.model = mp.game.joaat(model);
+    },
+
+    "moveCamera": (x, y, z) => {
+        browser.execute(`console.log(parseInt(${x})); console.log(parseInt(${y})); console.log(parseInt(${z}));`);
+        camera.setCoord(parseFloat(x), parseFloat(y), parseFloat(z)); // 402.8, -997, -98.35
     },
 
     "charCreation": (value) => {
         if (value) {
             browser.execute('window.app.history.push("/custom/create")');
+
             if (camera) {
                 camera.destroy();
                 camera = undefined;

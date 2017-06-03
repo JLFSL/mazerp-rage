@@ -1,13 +1,36 @@
 import Component from 'inferno-component';
 
+// This variable should really be apart of the state...
 const categoryList = [
-  { id: 0, name: 'Hats' },
-  { id: 1, name: 'Masks' },
   { id: 2, name: 'Hair' },
   { id: 3, name: 'Torso' },
+  { id: 8, name: 'Undershirt' },
+  { id: 11, name: 'Shirt' },
   { id: 4, name: 'Legs' },
-  { id: 5, name: 'Hands' },
   { id: 6, name: 'Feet' }
+];
+
+const faceList = [
+  { id: 0, name: 'FF' },
+  { id: 1, name: 'FF' },
+  { id: 2, name: 'FF' },
+  { id: 3, name: 'FF' },
+  { id: 4, name: 'FF' },
+  { id: 5, name: 'FF' },
+  { id: 6, name: 'FF' },
+  { id: 7, name: 'FF' },
+  { id: 8, name: 'FF' },
+  { id: 9, name: 'FF' },
+  { id: 10, name: 'FF' },
+  { id: 11, name: 'FF' },
+  { id: 12, name: 'FF' },
+  { id: 13, name: 'FF' },
+  { id: 14, name: 'FF' },
+  { id: 15, name: 'FF' },
+  { id: 16, name: 'FF' },
+  { id: 17, name: 'FF' },
+  { id: 18, name: 'FF' },
+  { id: 19, name: 'FF' }
 ];
 
 const playerModels = {
@@ -20,11 +43,12 @@ class CreationRoute extends Component {
     super(props);
 
     this.state = {
+      stage: 0,
       first: '',
       last: '',
       gender: 0,
       rotation: 0,
-      categories: {
+      face: {
         0: 0,
         1: 0,
         2: 0,
@@ -32,7 +56,27 @@ class CreationRoute extends Component {
         4: 0,
         5: 0,
         6: 0,
-        7: 0
+        7: 0,
+        8: 0,
+        9: 0,
+        10: 0,
+        11: 0,
+        12: 0,
+        13: 0,
+        14: 0,
+        15: 0,
+        16: 0,
+        17: 0,
+        18: 0,
+        19: 0
+      },
+      categories: {
+        2: 0,
+        3: 0,
+        4: 0,
+        6: 0,
+        8: 0,
+        11: 0
       }
     };
 
@@ -40,6 +84,9 @@ class CreationRoute extends Component {
     this.handleGender = this.handleGender.bind(this);
     this.handleCatUp = this.handleCatUp.bind(this);
     this.handleCatDown = this.handleCatDown.bind(this);
+    this.handleStage = this.handleStage.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleFaceChange = this.handleFaceChange.bind(this);
   }
 
   componentWillMount() {
@@ -57,7 +104,17 @@ class CreationRoute extends Component {
   }
 
   handleGender(gender) {
-    this.setState({ gender: playerModels[gender] });
+    this.setState({
+      gender: playerModels[gender],
+      categories: {
+        2: 0,
+        3: 0,
+        4: 0,
+        6: 0,
+        8: 0,
+        11: 0
+      }
+    });
 
     mp.trigger('updatePlayerModel', playerModels[gender]);
   }
@@ -76,8 +133,40 @@ class CreationRoute extends Component {
     mp.trigger('updateChar', cat, (categories[cat]-1));
   }
 
+  handleStage(value) {
+    const { stage } = this.state;
+
+    if ((stage + value) == 2) {
+      mp.trigger('moveCamera', 402.8, -997, -98.35);
+    }
+
+    if(stage == 2 && (stage + value) !== 2) {
+      mp.trigger('moveCamera', 403, -999, -99);
+    }
+
+    this.setState({
+      stage: (stage + value)
+    });
+  }
+
+  handleConfirm() {
+    console.log('CONFIRMED');
+  }
+
+  handleFaceChange(e) {
+    const { face } = this.state;
+
+    this.setState({
+      face: { ...face, [e.target.name]: (e.target.value / 100) }
+    });
+
+    console.log(`FaceUpdate: ${e.target.name} ${e.target.value}`);
+
+    mp.trigger('updateFace', e.target.name, (e.target.value / 100));
+  }
+
   render() {
-    const { first, last } = this.state;
+    const { first, last, face, stage } = this.state;
 
     return (
       <div style={{ width: '100%', height: '100%;' }}>
@@ -87,31 +176,63 @@ class CreationRoute extends Component {
               <div class="menu-heading">Create Character</div>
             </div>
             <div class="menu-main col-xs-12">
-              <div class="col-xs-12"  style={{ 'margin-top': '5px' }}></div>
-              <div class="sub-header">Enter a name</div>
-              <div class="selection-row row">
-                <input name="first" class="announce-input col-xs-5 first-name" placeholder="First Name" value={first} onChange={this.handleChange} />
-                <input name="last" class="announce-input col-xs-5 last-name" placeholder="Last Name" value={last} onChange={this.handleChange} />
-              </div>
-              <div class="col-xs-12"  style={{ 'margin-top': '15px' }}></div>
-              <div class="sub-header">Overall</div>
-              <div class="selection-row cc-row row">
-                <div class="selection-button-left" onClick={() => { this.handleGender('male'); }}><i class="fa fa-male" aria-hidden="true"></i></div>
-                <div class="selection-caption">Gender</div>
-                <div class="selection-button-right" onClick={() => { this.handleGender('female'); }}><i class="fa fa-female" aria-hidden="true"></i></div>
-              </div>
 
-              {categoryList.map((cat) => (
-                <div class="selection-row cc-row row">
-                  <div class="selection-button-left" onClick={() => { this.handleCatDown(cat.id); }}><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-                  <div class="selection-caption">{cat.name}</div>
-                  <div class="selection-button-right" onClick={() => { this.handleCatUp(cat.id); }}><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+              {stage == 0 ?
+                <div>
+                  <div class="sub-header" style={{ 'margin-top': '5px' }}>Enter a name</div>
+                  <div class="selection-row row">
+                    <input name="first" class="announce-input col-xs-5 first-name" placeholder="First Name" value={first} onChange={this.handleChange} />
+                    <input name="last" class="announce-input col-xs-5 last-name" placeholder="Last Name" value={last} onChange={this.handleChange} />
+                  </div>
                 </div>
-              ))}
+              : null}
 
-              <div class="col-xs-12"  style={{ 'margin-top': '10px' }}></div>
-              <div class="selection-row row" style={{ 'margin-left': '-5px' }}>
-                <div class="selection-button-full button-green" type="submit" data-trigger="">Confirm</div>
+              {stage == 1 ?
+                <div>
+                  <div class="sub-header" style={{ 'margin-top': '15px' }}>Overall</div>
+                  <div class="selection-row cc-row row">
+                    <div class="selection-button-left" onClick={() => { this.handleGender('male'); }}><i class="fa fa-male" aria-hidden="true"></i></div>
+                    <div class="selection-caption">Gender</div>
+                    <div class="selection-button-right" onClick={() => { this.handleGender('female'); }}><i class="fa fa-female" aria-hidden="true"></i></div>
+                  </div>
+
+                  {categoryList.map((cat) => (
+                    <div class="selection-row cc-row row">
+                      <div class="selection-button-left" onClick={() => { this.handleCatDown(cat.id); }}><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                      <div class="selection-caption">{cat.name}</div>
+                      <div class="selection-button-right" onClick={() => { this.handleCatUp(cat.id); }}><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+                    </div>
+                  ))}
+
+                </div>
+              : null}
+
+              {stage == 2 ?
+                <div>
+                  <div class="sub-header" style={{ 'margin-top': '15px' }}>Face Features</div>
+
+                  {faceList.map((cat) => (
+                    <div class="selection-row cc-row row">
+
+                      <div class="selection-caption small">{cat.name}</div>
+                      <input class="range" style={{ width: '60%', padding: '0 2.5%', float: 'left', background: 'rgba(0,0,0,0)' }} name={cat.id} type="range" min={0} max={100} step={1} defaultValue={0} value={face[cat.id] * 100} onChange={this.handleFaceChange} />
+                    </div>
+                  ))}
+
+                </div>
+              : null}
+
+              {stage == 3 ?
+                <div style={{ 'color': '#FFFFFF', 'text-align': 'center' }}>
+                  <h1>Are you sure?</h1>
+                  <p>Once you click confirm, you will no longer be able to make changes to your characters physical appearance!</p>
+                </div>
+              : null}
+
+              <div class="selection-row row" style={{ 'margin-top': '10px', 'margin-left': '-5px' }}>
+                {stage > 0 ? <div class="selection-button-full button-red" onClick={() => { this.handleStage(-1); }}>Go Back</div> : null}
+                {stage < 3 ? <div class="selection-button-full button-green" onClick={() => { this.handleStage(1); }}>Next Step</div> : null}
+                {stage == 3 ? <div class="selection-button-full button-green" onClick={() => { this.handleConfirm(); }}>Confirm</div> : null}
               </div>
             </div>
           </div>

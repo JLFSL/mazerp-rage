@@ -31,6 +31,11 @@ module.exports = {
 		}
 	],
 
+	charCreation: {
+		position: new mp.Vector3(402.9575500488281, -996.8289184570312, -99.000244140625),
+	  heading: 179.5724639892578
+	},
+
 	respawnByDeath: [
 		{
 			position: new mp.Vector3(342.1229248046874, -1397.3350830078125, 32.50927734375),
@@ -39,6 +44,7 @@ module.exports = {
 	],
 
 	dimensions: {
+		private: 500000000, // Private + player.id - Used for charCreation and *QUEUE*
 		public: 999999990, // Public world, where all the roleplay happens.
 		event: 999999991, // World for events, to not ruin other's experience.
 		noLogin: 999999992, // As not logged in players shouldn't be able to perform any actions in the world.
@@ -57,10 +63,3 @@ module.exports = {
 		// drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
 	}
 };
-
-/*
-	Position for char creation area
-
-  Position: 402.9575500488281, -996.8289184570312, -99.000244140625
-  Heading: 176.65760803222656
-*/

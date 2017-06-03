@@ -11,9 +11,8 @@ module.exports = {
                     let amount = parseInt(cart[itemName]["amount"]);
                     let name = cart[itemName]["name"];
                     let item = cart[itemName]["item"];
-                    for(let i=0; i<amount; i++) {
-                        //player.inventory.push(item);
-                    }
+                    
+                    player.inventory[name] += amount;
 
                     player.sendMessage("You bought " + name + " (x" + amount + ") for " + cart[itemName]["price"] + "$.");
                 }

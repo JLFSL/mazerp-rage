@@ -12,37 +12,64 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 <link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
 <link rel="stylesheet" href="css\font-awesome.min.css">
+<script type="text/javascript" src="..\itemInfo.js"></script>
 <script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
 <title>Shop Menu</title>
 </head>
 <script>
-  var inventory = {"weedStacks":{"amount":1}};
+  var inventory;
+  var itemInfo = {};
+
+      var $_GET = {};
+      if(document.location.toString().indexOf('?') !== -1) {
+          var query = document.location
+                        .toString()
+                        .replace(/^.*?\?/, '')
+                        .replace(/#.*$/, '')
+                        .split('&');
+
+          for(var i=0, l=query.length; i<l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            $_GET[aux[0]] = aux[1];
+          }
+      } // https://stackoverflow.com/questions/12049620/how-to-get-get-variables-value-in-javascript
+
+
+  if($_GET["inventory"] == undefined) {
+    inventory = {"weedStacks":{"amount":4}};
+  } else {
+    inventory = JSON.parse($_GET["inventory"]);
+  }
+
   var amountOfItems = Object.keys(inventory).length;
   var maxPages = Math.ceil(amountOfItems / 4);
 
-  var itemInfo = {};
 
   jQuery(document).ready(function($) {
 
-      var itemInfo = $.getJSON("../itemInfo.json");
-      console.log(itemInfo);
+      var itemInfo = itemInformation;
 
-      for(var i = 1; i<=maxPages; i++) { 
+      for(var i = 1; i<=maxPages; i++) {
+
 
         var newWindowMain = $(document.createElement("div")).addClass("window-main").hide().appendTo(".window-menu").attr("data-num",i);
         for(var k=0; k<(amountOfItems - 4*(i-1)); k++) {
           var key = Object.keys(inventory)[k*i];
+          if(!(key in itemInfo)) { continue; }
           var item = inventory[key];
 
-          var newWindowRow = $(document.createElement("div")).addClass("window-row row").appendTo($(newWindowMain));
+          var newWindowRow = $(document.createElement("div")).addClass("window-row row").css("border-left","0").appendTo($(newWindowMain));
           var newWindowItem = $(document.createElement("div")).addClass("col-xs-8 window-item").appendTo($(newWindowRow));
           var newWindowHeader = $(document.createElement("div")).addClass("window-item-header").html(itemInfo[key]["name"]).appendTo($(newWindowItem));
-          var description = $(newWindowItem).html(itemInfo[key]["description"]);
+          var description = $(newWindowItem).html($(newWindowItem).html() + itemInfo[key]["description"]);
 
           var newWindowValue = $(document.createElement("div")).addClass("col-xs-2 window-value").html("x" + item["amount"]).appendTo($(newWindowRow));
-          var newWindowButton = $(document.createElement("div")).addClass("col-xs-2 window-purchase").appendTo($(newWindowRow)).attr("data-propername",itemInfo[key]["name"]).attr("data-amount",item["amount"]).attr("data-item",key);
+          if(itemInfo[key]["useable"]) {
+          var newWindowButton = $(document.createElement("div")).addClass("col-xs-2 window-purchase").appendTo($(newWindowRow)).attr("data-propername",itemInfo[key]["name"]).attr("data-amount",item["amount"]).attr("data-item",key).html("Use");
+          }
         }
       }
+      
 
        // pagination 
        var newPagination = $(document.createElement("ul")).addClass("window-pagination pagination").appendTo(".window-menu");
@@ -53,7 +80,7 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
           $(newPage).appendTo($(".window-pagination"));
        }
 
-
+       $(".window-main[data-num=1]").show();
 
   });
 

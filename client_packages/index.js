@@ -3,6 +3,7 @@ let interactionMenuBrowser;
 let shopMenuBrowser;
 let policeMBT;
 let authCam;
+let inventoryBrowser;
 
 let browser;
 let weedMenuBrowser = undefined;
@@ -128,8 +129,8 @@ mp.events.add({
         mp.events.callRemote("cefCollectWeed", amount);
     },
 
-    "showInventory": () => {
-        inventoryBrowser = mp.browsers.new("package://html/inventory.html");
+    "showInventory": (inventory) => {
+        inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + JSON.stringify(inventory));
     }
 });
 

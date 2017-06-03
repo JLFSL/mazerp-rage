@@ -67,6 +67,10 @@ mp.events.add({
         player.setComponentVariation(cat, value, 0, 0);
     },
 
+    "updatePlayerModel": (model) => {
+        player.model = mp.game.joaat(model);
+    },
+
     "charCreation": (value) => {
         if (value) {
             browser.execute('window.app.history.push("/custom/create")');

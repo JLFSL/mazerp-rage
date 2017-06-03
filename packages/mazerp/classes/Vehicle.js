@@ -75,7 +75,7 @@ module.exports = class Vehicle {
                         var position = new mp.Vector3(result[i].position_x, result[i].position_y, result[i].position_z);
                         var rotation = new mp.Vector3(result[i].rotation_x, result[i].rotation_y, result[i].rotation_z);
 
-                        var veh = mp.vehicles.new(result[i].model_name, position);
+                        var veh = mp.vehicles.new(mp.joaat(result[i].model_name), position);
                         veh.dimension = variables.dimensions.public;
                         veh.rotation = rotation;
                     }

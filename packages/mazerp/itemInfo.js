@@ -4,10 +4,17 @@ module.exports = {
 		"description": "It has no value unless cleaned properly.",
 		"useable": false
 	},
-	"weedStacks": {
-		"name": "Weed Stacks",
+
+	"weedOunces": {
+		"name": "Weed Ounces",
 		"description":"Smoke Weed Everyday!",
-		"useable": true
+		"useable": false
+	},
+
+	"weedPound": {
+		"name": "Weed Pound",
+		"description":"Ready for the market.",
+		"useable": false
 	},
 
 	"pizzaBite": {

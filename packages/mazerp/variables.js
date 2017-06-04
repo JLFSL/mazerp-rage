@@ -59,8 +59,9 @@ module.exports = {
 	drugs: {
 		drugColshape: mp._colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
 		drugArea: mp._colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50),
+		drugPackaging: mp._colshapes.newSphere(2194.9208984375, 5599.69833984375, 53.69104766845703, 15),
 		drugSale: mp._colshapes.newCircle(57.66674041748047, -1852.6238125,5),
-		drugSaleArea: mp._colshapes.newCircle(57.66674041748047, -1852.6238125,30)
+		drugSaleArea: mp._colshapes.newCircle(57.66674041748047, -1852.6238125,30),
 		// drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
 		// drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
 	},

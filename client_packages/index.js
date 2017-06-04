@@ -8,6 +8,7 @@ let camera;
 let browser;
 let weedMenuBrowser = undefined;
 let weedDeliveryMenuBrowser = undefined;
+let weedPackageMenuBrowser = undefined;
 
 const player = mp.players.local;
 
@@ -184,6 +185,24 @@ mp.events.add({
             weedDeliveryMenuBrowser = undefined;
         }
     },
+
+     "showWeedPackageMenu": () => {
+        if(weedPackageMenuBrowser == undefined) {
+            weedPackageMenuBrowser = mp.browsers.new("package://html/weed_packaging.html");
+        }
+    },
+
+    "hideWeedPackageMenu": () => {
+        if(weedPackageMenuBrowser != undefined) {
+            weedPackageMenuBrowser.destroy();
+            weedPackageMenuBrowser = undefined;
+        }
+    },
+
+     "packagingWeed": () => {
+        mp.events.callRemote("cefPackageWeed");
+    },
+
     "deliverWeed": () => {
         mp.events.callRemote("cefDeliverWeed");
     },

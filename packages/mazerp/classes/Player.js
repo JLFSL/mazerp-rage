@@ -26,7 +26,8 @@ module.exports = class Player {
         this.sFactionName;
         this.bOnDuty;
 
-        this.sPhoneNumber = "06-1337-69";
+        this.sPhoneNumber;
+        this.messages = [];
 
         this.iRent;
         this.iHouse;

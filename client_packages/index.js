@@ -24,6 +24,11 @@ mp.events.add({
         browser.execute(`window.app.history.push("${route}")`);
     },
 
+    "updateHUD": (food, thirst) => {
+        browser.execute(`console.log('${food}, ${thirst}')`);
+        browser.execute(`window.app.updateHUD(${food}, ${thirst})`);
+    },
+
     "closeMenu": () => {
         browser.execute('window.app.history.push("/")');
     },

@@ -17,7 +17,12 @@ module.exports = {
             player.player.call("openMenu", "/login");
             player.setDimension(variables.dimensions.noLogin); // for testing purposes
 
-            variables.PlayerInfo[player.player.id] = player;
+            // ISSUE: only shows last shown menu
+            player.player.call("openMenu", "/status");
+
+            // Add the current player to our array
+            // REMINDER: remove on disconnect
+            variables.PlayerInfo.push(player);
         }
     }
 };

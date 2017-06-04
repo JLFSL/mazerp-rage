@@ -11,7 +11,7 @@ module.exports = {
 
   vehicles: [],
 
-	PlayerInfo: {},
+	PlayerInfo: [],
 	TaxiInfo: {},
 	TaxiBranchInfo: [],
 	ConvenientStoreInfo: [],
@@ -161,4 +161,38 @@ module.exports = {
 			type: "gas station"
 		}
 	],
+
+	getHungerState: (fHunger) => {
+		switch(true) {
+		case(fHunger < 15):
+			return ["I feel really full", [39, 174, 96]];
+		case(fHunger < 25):
+			return ["I feel full", [46, 204, 113]];
+		case(fHunger < 50):
+			return ["I'm starting to feel hungry", [241, 196, 15]];
+		case(fHunger < 75):
+			return ["I'm feeling hungry", [243, 156, 18]];
+		case(fHunger < 90):
+			return ["I really need to eat something", [211, 84, 0]];
+		case(fHunger < 100):
+			return ["I'm starving", [192, 57, 43]];
+		}
+	},
+
+	getThirstState: (fThirst) => {
+		switch(true) {
+		case(fThirst < 15):
+			return ["I'm feeling really hydrated", [39, 174, 96]];
+		case(fThirst < 25):
+			return ["I feel hydrated", [46, 204, 113]];
+		case(fThirst < 50):
+			return ["I feel like having a drink", [241, 196, 15]];
+		case(fThirst < 75):
+			return ["I feel thirsty", [243, 156, 18]];
+		case(fThirst < 90):
+			return ["I really need to drink something", [211, 84, 0]];
+		case(fThirst < 100):
+			return ["I'm dying of hydration", [192, 57, 43]];
+		}
+	}
 };

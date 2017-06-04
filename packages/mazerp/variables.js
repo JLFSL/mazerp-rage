@@ -11,7 +11,7 @@ module.exports = {
 
   vehicles: [],
 
-	PlayerInfo: {},
+	PlayerInfo: [],
 	TaxiInfo: {},
 	TaxiBranchInfo: [],
 	ConvenientStoreInfo: [],
@@ -33,7 +33,7 @@ module.exports = {
 	],
 
 	charCreation: {
-		position: new mp.Vector3(402.9575500488281, -996.8289184570312, -99.000244140625),
+		position: new mp.Vector3(402.74761962890625, -996.6173706054688, -99.00025177001953),
 	  heading: 179.5724639892578
 	},
 
@@ -63,6 +63,42 @@ module.exports = {
 		drugSaleArea: mp._colshapes.newCircle(57.66674041748047, -1852.6238125,30)
 		// drugColshape: mp.colshapes.newCircle(2223.442626953125, 5577.14404296875, 10),
 		// drugArea: mp.colshapes.newSphere(2223.442626953125, 5577.14404296875, 53.80788803100586, 50)
+	},
+
+	getHungerState: function(fHunger)
+	{
+		switch(true) {
+		case(fHunger < 15):
+			return ["I feel really full", [39, 174, 96]];
+		case(fHunger < 25):
+			return ["I feel full", [46, 204, 113]];
+		case(fHunger < 50):
+			return ["I'm starting to feel hungry", [241, 196, 15]];
+		case(fHunger < 75):
+			return ["I'm feeling hungry", [243, 156, 18]];
+		case(fHunger < 90):
+			return ["I really need to eat something", [211, 84, 0]];
+		case(fHunger < 100):
+			return ["I'm starving", [192, 57, 43]];
+		}
+	},
+
+	getThirstState: function(fThirst)
+	{
+		switch(true) {
+		case(fThirst < 15):
+			return ["I'm feeling really hydrated", [39, 174, 96]];
+		case(fThirst < 25):
+			return ["I feel hydrated", [46, 204, 113]];
+		case(fThirst < 50):
+			return ["I feel like having a drink", [241, 196, 15]];
+		case(fThirst < 75):
+			return ["I feel thirsty", [243, 156, 18]];
+		case(fThirst < 90):
+			return ["I really need to drink something", [211, 84, 0]];
+		case(fThirst < 100):
+			return ["I'm dying of hydration", [192, 57, 43]];
+		}
 	},
 
 	convenientStores: [
@@ -161,5 +197,5 @@ module.exports = {
 			radius: 2,
 			type: "gas station"
 		}
-	],
+	]
 };

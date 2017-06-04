@@ -25,6 +25,11 @@ mp.events.add({
         browser.execute(`window.app.history.push("${route}")`);
     },
 
+    "updateHUD": (food, thirst) => {
+        browser.execute(`console.log('${food}, ${thirst}')`);
+        browser.execute(`window.app.updateHUD(${food}, ${thirst})`);
+    },
+
     "closeMenu": () => {
         browser.execute('window.app.history.push("/")');
     },
@@ -68,13 +73,24 @@ mp.events.add({
         player.setComponentVariation(cat, value, 0, 0);
     },
 
+    "updateFace": (index, scale) => {
+        browser.execute(`console.log('value: ${index} ${scale}')`);
+        player.setFaceFeature(parseInt(index), parseFloat(scale));
+    },
+
     "updatePlayerModel": (model) => {
         player.model = mp.game.joaat(model);
+    },
+
+    "moveCamera": (x, y, z) => {
+        browser.execute(`console.log(parseInt(${x})); console.log(parseInt(${y})); console.log(parseInt(${z}));`);
+        camera.setCoord(parseFloat(x), parseFloat(y), parseFloat(z)); // 402.8, -997, -98.35
     },
 
     "charCreation": (value) => {
         if (value) {
             browser.execute('window.app.history.push("/custom/create")');
+
             if (camera) {
                 camera.destroy();
                 camera = undefined;
@@ -132,6 +148,19 @@ mp.events.add({
         mp.events.callRemote("cefCheckWallet");
         if(interactionMenuBrowser)
             interactionMenuBrowser.destroy();
+    },
+
+    "toggleShopKeybind": (toggle, data = null) => {
+        if (toggle) {
+            browser.execute(`console.log('Enabled Keybind')`);
+            mp.keys.bind(0x45, true, () => {
+                browser.execute(`console.log('key pressed')`);
+                browser.execute('window.app.history.push("/shop/convenience")');
+            });
+        } else {
+            browser.execute(`console.log('Disabled Keybind')`);
+            mp.keys.unbind(0x45, true);
+        }
     },
 
     "shopMenuShow": () => {
@@ -195,12 +224,10 @@ mp.events.add({
     "showInventory": (inventory, itemInfo) => { // INVENTORY HAS TO BE STRINGIFIED! -> otherwise crashing GTA 5
         inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + inventory + "&itemInformation=" + itemInfo);
     }, // passing the whole itemInfo.js via $_GET as well as the inventory is super primitive and needs to be overworked -Svvite.
-    
     "hideInventory": () => {
         inventoryBrowser.destroy();
     }
 
-    
 });
 
 

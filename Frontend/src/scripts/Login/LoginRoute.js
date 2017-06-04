@@ -49,7 +49,7 @@ class LoginRoute extends Component {
 
   disconnect() {
     window.app.history.push("/");
-    // mp.trigger('cefLoginDisconnect');
+    mp.trigger('cefLoginDisconnect');
   }
 
   handleChange(e) {
@@ -75,8 +75,9 @@ class LoginRoute extends Component {
 
                 {loading ?
                   <div class="col-md-12">
-                    <div class="announce-row" style={{ 'text-align': 'center' }}>
+                    <div class="announce-row" style={{ color: 'white', 'text-align': 'center' }}>
                       <h1>Attempting Login...</h1>
+                      <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                     </div>
                   </div>
                 :

@@ -1,7 +1,7 @@
 import Component from 'inferno-component';
 import { Router } from 'inferno-router';
 
-class LoginRoute extends Component {
+class ActionRoute extends Component {
   constructor(props) {
     super(props);
 
@@ -45,4 +45,4 @@ class LoginRoute extends Component {
   }
 }
 
-export default LoginRoute;
+export default ActionRoute;

@@ -9,7 +9,6 @@ module.exports = {
         name: "cefLogin",
         execute: (player, result) => {
             const parseData = JSON.parse(result);
-            logger.log("debug", `cefLogin(${player.name}): ${parseData.email}, ${parseData.password}.`);
 
             if (player.logged_in)
                 return player.sendMessage("SERVER: You are already logged in.");
@@ -49,11 +48,10 @@ module.exports = {
                                     });
                             } else {
                             	// Check if they've finished charCustomization
-                            	if (result.created && parseInt(result.created) > 0) {
+                            	if (result.created && parseInt(result.created) > 0)
 	                                framework.emit("playerLogin", player, result);
-                            	} else {
+                            	else
 	                            	framework.emit("playerCharCreation", player, result);
-                            	}
                             }
                         })
                         .catch((err) => {

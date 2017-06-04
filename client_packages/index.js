@@ -123,7 +123,7 @@ mp.events.add({
 
     "toggleChat": (value) => {
         mp.gui.chat.activate(value);
-        mp.gui.execute(`mp.invoke("focus", ${!value})`); player.freezePosition(true);
+        mp.gui.execute(`mp.invoke("focus", ${!value})`);
     },
 
     "setRot": (value) => {

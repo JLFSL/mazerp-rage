@@ -40,7 +40,7 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
     alreadyHas = 0;
   }
 
-  var max = 5 - alreadyHas;
+  var max = 16 - alreadyHas;
 
   jQuery(document).ready(function($) {
 
@@ -53,9 +53,9 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
         cultivating = true;
 
         $(this).removeClass("button-green").addClass("button-red");
-        $(this).html("3:00");
+        $(this).html("1:00");
 
-        var minutes = 3;
+        var minutes = 1;
         var seconds = 0;
 
         var timer = setInterval(function() {
@@ -114,7 +114,7 @@ License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML fi
 <div class="col-xs-9" style="padding-right: 0;">
   <div class="announce-box" style="display: block;">
     <div class="announce" style="position: relative; top: 75%; float: right;">
-      <div class="announce-main" style="padding: 0;">
+      <div class="announce-main jump-from-right" style="padding: 0;">
         <div class="col-xs-6">
           <div class="selection-row">
             <div class="selection-button-full button-green" id="cultivate">Cultivate</div>

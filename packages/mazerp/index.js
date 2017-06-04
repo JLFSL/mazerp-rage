@@ -29,6 +29,13 @@ module.exports.variables = variables;
 Vehicle.load();
 Taxi.LoadTaxiBranches();
 
+for(var storeNum in variables.convenientStores) {
+    let store = variables.convenientStores[storeNum];
+    let sphere = mp._colshapes.newSphere(store["position"].x, store["position"].y, store["position"].z, store["radius"]);
+    variables.ConvenientStoreInfo[storeNum] = sphere.id;
+    ///let newBlip = mp.blips.new(store["position"], store["radius"]);
+}
+
 /* California Highway Patrol */
 let policeLoadoutPos = new mp.Vector3(458.826416015625,-990.9177856445312, 30.689605712890625);
 //let policeLoadout = mp.checkpoints.new(1,policeLoadoutPos,policeLoadoutPos,policeLoadoutPos, 2, 0, 255, 0, 255, true, variables.dimensions.public); // prob buggy

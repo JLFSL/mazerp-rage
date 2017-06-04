@@ -41,9 +41,9 @@ banking.BankAccount = class CBankAccount {
 
 // could be loaded by finding all ATM objects
 banking.ATM = class CATM {
-    constructor(vPosition,iID) {
+    constructor(vPosition, pCheckpoint ,iID) {
         this.vPosition = vPosition;
-        this.pCheckpoint = mp.checkpoints.new(45, vPosition, vPosition, vPosition, 1.0, 0, 255, 255, 255, true, variables.dimenions.public);
+        this.pCheckpoint = pCheckpoint; // mp.checkpoints.new(45, vPosition, vPosition, vPosition, 1.0, 0, 255, 255, 255, true, variables.dimenions.public);
         this.iID = iID;
         this.iMaxWidthdraw = -1;
 
@@ -54,12 +54,12 @@ banking.ATM = class CATM {
 }
 
 banking.Branch = class CBranch {
-    constructor(vPosition, sName, iID) {
+    constructor(vPosition, pCheckpoint, sName, iID) {
         this.vPosition = vPosition;
         this.sName = sName;
         this.iID = iID;
 
-        this.pCheckpoint = mp.checkpoints.new(45, vPosition, vPosition, vPosition, 1.0, 0, 255, 255, 255, true, variables.dimenions.public);
+        this.pCheckpoint = pCheckpoint; //mp.checkpoints.new(45, vPosition, vPosition, vPosition, 1.0, 0, 255, 255, 255, true, variables.dimenions.public);
         this.pNPC; // tbd
     }
 }

@@ -148,7 +148,7 @@ mp.events.add({
         shopMenuBrowser = mp.browsers.new("package://html/shop.html");
     },
 
-    "hideShop": () => {
+    "shopMenuHide": () => {
         shopMenuBrowser.destroy();
     },
 

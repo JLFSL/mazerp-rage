@@ -14,6 +14,7 @@ module.exports = {
 	PlayerInfo: [],
 	TaxiInfo: {},
 	TaxiBranchInfo: [],
+	ConvenientStoreInfo: [],
 
 	loginCamera: {
 		position: new mp.Vector3(-1772.4903564453125, -1166.7955322265625, 13.017889976501465),
@@ -97,5 +98,103 @@ module.exports = {
 		case(fThirst < 100):
 			return ["I'm dying of hydration", [192, 57, 43]];
 		}
-	}
+	},
+
+	convenientStores: [
+		{
+			position: new mp.Vector3(1136.101318359375, -981.7711181640625, 46.41584396362305),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(1162.81103515625, -323.2835693359375, 69.20507049560547),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(375.4753112792969,  327.67608642578125, 103.5663833618164),
+			radius: 3,
+			type: "store",
+		},
+		{
+			position: new mp.Vector3(27.3969192, -1345.335327, 29.497026),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(-48.458717, -1756.344970, 29.4210014),
+			radius: 3,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(-708.453674, -912.986572, 19.21559143),
+			radius: 3,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(-1223.302490, -906.840454, 12.326354),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(-1487.072265, -379.480407, 40.1634254),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(-1821.317016, 793.127624, 138.119705),
+			radius: 3,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(-3243.333740, 1002.193420, 12.830707),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(-3041.306396, 586.121276, 7.908929),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(-2968.610839, 390.443237, 15.0433120),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(546.650146, 2669.1804192, 42.1565322),
+			radius: 3,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(1392.645019, 3603.872558, 34.9809265),
+			radius: 2,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(1961.768310, 3743.1936035, 32.343746),
+			radius: 2,
+			type: "store"
+		},
+		{
+			position: new mp.Vector3(2555.442382, 383.229187, 108.622955),
+			radius: 2,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(2677.683349, 3282.059326, 55.2411346),
+			radius: 2,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(1699.264895, 4924.54980, 42.063671112),
+			radius: 2,
+			type: "gas station"
+		},
+		{
+			position: new mp.Vector3(1730.572143, 6415.785156, 35.0372238),
+			radius: 2,
+			type: "gas station"
+		}
+	]
 };

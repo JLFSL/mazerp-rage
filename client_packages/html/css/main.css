@@ -733,6 +733,19 @@ div, span, strong, small {
 	width: 100%;
 }
 
+@keyframes transitionFromRight {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.jump-from-right {
+	animation: 0.125s linear transitionFromRight;
+}
+
 .computer-main {
 	position: relative;
 	min-height: 500px;

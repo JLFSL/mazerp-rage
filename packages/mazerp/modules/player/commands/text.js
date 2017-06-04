@@ -6,7 +6,13 @@ module.exports = {
         aliases: [],
         name: "text",
         execute: (player, message, arguments) => {
-            if (arguments.length < 3) return player.sendMessage("The usage for that command is (/text [number] [message] )");
+            if (arguments.length < 3) {
+                for(i=player.messages.length-1; i>=0; i--) {
+                    player.sendMessage("" + player.messages[i]);
+                }
+                player.sendMessage("[INFO] Use '/text [number] [message] to send a text message!");
+                return;
+            }
 
             let number = arguments[1];
             let toSend = "";
@@ -18,10 +24,15 @@ module.exports = {
 
             for(playerKey in variables.PlayerInfo) {
                 let pPlayer = variables.PlayerInfo[playerKey];
-                console.log("" + pPlayer.sPhoneNumber);
                 if(pPlayer.sPhoneNumber == number) {
                     bFound = true;
                     pPlayer.sendMessage("[PHONE] " + player.sPhoneNumber + ": " + toSend);
+                    if(pPlayer.messages.length == 5) {
+                        pPlayer.messages.pop(pPlayer.messages);
+                    }
+                    pPlayer.messages.unshift("From " + player.sPhoneNumber + ": " + toSend);
+                    console.log("" + JSON.stringify(pPlayer.messages));
+
                 }
             }
             if(bFound) {

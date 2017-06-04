@@ -29,6 +29,7 @@ module.exports.variables = variables;
 Vehicle.load();
 Taxi.LoadTaxiBranches();
 
+
 for(var storeNum in variables.convenientStores) {
     let store = variables.convenientStores[storeNum];
     let sphere = mp._colshapes.newSphere(store["position"].x, store["position"].y, store["position"].z, store["radius"]);

@@ -30,8 +30,8 @@ module.exports = {
                     logger.log("error", err.stack);
                 });
 
-            player.staff = result.staff;
-            player.money = result.money;
+            player.iStaffLevel = result.staff;
+            player.iCash = result.money;
             player.bLoggedIn = true;
         }
     }

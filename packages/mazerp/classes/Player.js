@@ -4,37 +4,27 @@ module.exports = class Player {
     constructor(player) {
         this.player = player;
         this.iID;
-        this.iEntity;
+        this.bLoggedIn;
+
+        this.iStaffLevel;
 
         this.iCash;
         this.iBankAccount;
-        this.stLastPaycheck;
-        this.pJob;
-        this.sJobName;
-        this.iJobLevel;
-        this.iJobMissions;
 
-        this.inventory = {};
-        this.iWallet = 0;
+        this.aInventory = {};
 
         this.fHunger = 0.0;
         this.fThirst = 0.0;
         this.bUnconscious = false;
 
-        this.pFaction;
-        this.iFactionRank;
-        this.sFactionName;
-        this.bOnDuty;
-      
         this.sPhoneNumber;
-        this.messages = [];
+        this.sMessages = [];
 
-        this.iRent;
-        this.iHouse;
+        this.iFaction;
 
-        this.bEmployed;
-        this.iEmploymentTicks;
-        this.iEmploymentTime;
+        //this.bEmployed;
+        //this.iEmploymentTicks;    --      these are related to the paycheck, which I temporarily disabled. ^Jimmy
+        //this.iEmploymentTime;
     }
 
     sendMessage(message) {

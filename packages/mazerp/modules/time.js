@@ -37,7 +37,7 @@ setInterval(() => {
         //variables.PlayerInfo[p].sendMessage(variables.getHungerState(variables.PlayerInfo[p].fHunger)[0]);
         //variables.PlayerInfo[p].sendMessage(variables.getThirstState(variables.PlayerInfo[p].fThirst)[0]);
 
-        if(variables.PlayerInfo[p].bEmployed) {
+        /*if(variables.PlayerInfo[p].bEmployed) {
             variables.PlayerInfo[p].iEmploymentTime++;
 
             if(variables.PlayerInfo[p].iEmploymentTime >= 5) { // If time is 5 minutes, give player new employment tick, reset time for tick and add the payment he receives for that tick to the payment var.
@@ -45,11 +45,11 @@ setInterval(() => {
                 variables.PlayerInfo[p].iEmploymentTime = 0;
                 variables.PlayerInfo[p].iPayment += variables.PlayerInfo[p].job.payPerTick;
             }
-        }
+        }*/
     }
 
     // Paycheck
-    if(minutes == 40) {
+    /*if(minutes == 40) {
         for(var p = 0; p < variables.PlayerInfo.length; p++) {
                 let Payment = variables.PlayerInfo[p].iPayment;
                 // send proper message to player that it worked n stuff
@@ -61,5 +61,5 @@ setInterval(() => {
                 variables.PlayerInfo[p].iEmploymentTicks = 0;
                 variables.PlayerInfo[p].iPayment = 0;
         }
-    }
+    }*/
 }, 60000);

@@ -48,11 +48,10 @@ module.exports = {
                                     });
                             } else {
                             	// Check if they've finished charCustomization
-                            	if (result.created && parseInt(result.created) > 0) {
+                            	if (result.created && parseInt(result.created) > 0)
 	                                framework.emit("playerLogin", player, result);
-                            	} else {
+                            	else
 	                            	framework.emit("playerCharCreation", player, result);
-                            	}
                             }
                         })
                         .catch((err) => {

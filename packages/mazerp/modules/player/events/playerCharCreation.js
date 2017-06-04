@@ -15,9 +15,10 @@ module.exports = {
             player.setHealth(result.health);
             player.setArmour(result.armour);
             player.setDimension(variables.dimensions.private + result.id);
-            player.staff = result.staff;
-            player.money = result.money;
-            player.logged_in = true;
+
+            player.iStaffLevel = result.iStaffLevel;
+            player.iCash = result.iCash;
+            player.bLoggedIn = true;
 
             player.player.call("openMenu","/custom/create");
             // player.player.call("closeMenu");

@@ -6,19 +6,19 @@ module.exports = {
         name: "cefCollectWeed",
         execute: (player, amount) => {
             let current = 0;
-            if(player.inventory != undefined && "weedStacks" in player.inventory) {
-                current = player.inventory["weedStacks"];
+            if(player.aInventory != undefined && "weedStacks" in player.aInventory) {
+                current = player.aInventory["weedStacks"];
             } else {
-                player.inventory["weedStacks"] = 0;
+                player.aInventory["weedStacks"] = 0;
             }
             
             if((current+amount) <= 5) {
-            player.inventory["weedStacks"] += amount;
+            player.aInventory["weedStacks"] += amount;
             } else {
-                player.inventory["weedStacks"] = 5;
+                player.aInventory["weedStacks"] = 5;
             }
 
-            player.sendMessage("You are now in possession of " + player.inventory["weedStacks"] + " weed stacks! (MAX: 5)")
+            player.sendMessage("You are now in possession of " + player.aInventory["weedStacks"] + " weed stacks! (MAX: 5)")
         }
     }
 };

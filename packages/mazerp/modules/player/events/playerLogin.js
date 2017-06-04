@@ -32,7 +32,7 @@ module.exports = {
 
             player.staff = result.staff;
             player.money = result.money;
-            player.logged_in = true;
+            player.bLoggedIn = true;
         }
     }
 };

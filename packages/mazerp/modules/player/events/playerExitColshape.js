@@ -8,13 +8,11 @@ module.exports = {
         name: "playerExitColshape",
         execute: (player, colshape) => {
 
-            if(colshape.id == variables.drugs.drugArea.id) { // leaving drug farm
+            if(colshape.id == variables.drugs.drugArea.id) // leaving drug farm
                 player.player.call("hideWeedMenu");
-            }
 
-            if(variables.ConvenientStoreInfo.indexOf(colshape.id) > -1) { // leaving convenient stores
+            else if(variables.ConvenientStoreInfo.indexOf(colshape.id) > -1) // leaving convenient stores
                 player.player.call('toggleShopKeybind', false);
-            }
 
             logger.log("debug", `${player.name} left Colshape ID ${colshape.id}.`);
         }

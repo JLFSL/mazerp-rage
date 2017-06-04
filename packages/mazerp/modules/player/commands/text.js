@@ -4,42 +4,45 @@ const variables = require("../../../variables");
 module.exports = {
     command: {
         aliases: [],
-        name: "text",
+        name: "Text",
         execute: (player, message, arguments) => {
             if (arguments.length < 3) {
-                for(i=player.messages.length-1; i>=0; i--) {
-                    player.sendMessage("" + player.messages[i]);
+                for(var i = player.sMessages.length -1; i >= 0; i--) {
+                    player.sendMessage("" + player.sMessages[i]);
                 }
-                player.sendMessage("[INFO] Use '/text [number] [message] to send a text message!");
-                return;
+                return player.sendMessage("The usage for that command is (/text [number] [message])");
             }
 
-            let number = arguments[1];
-            let toSend = "";
-            for(let i = 2; i < arguments.length; i++) {
+            var number = arguments[1];
+            var toSend = "";
+            var bFound = false;
+
+            for(var i = 2; i < arguments.length; i++) {
                 toSend += " " + arguments[i];
             }
-            let bFound = false;
 
             player.sPhoneNumber = "06-1337-69";
 
             for(playerKey in variables.PlayerInfo) {
-                let pPlayer = variables.PlayerInfo[playerKey];
+                var pPlayer = variables.PlayerInfo[playerKey];
+
                 if(pPlayer.sPhoneNumber == number) {
-                    bFound = true;
                     pPlayer.sendMessage("[PHONE] " + player.sPhoneNumber + ": " + toSend);
-                    if(pPlayer.messages.length == 5) {
-                        pPlayer.messages.pop(pPlayer.messages);
-                    }
-                    pPlayer.messages.unshift("From " + player.sPhoneNumber + ": " + toSend);
-                    console.log("" + JSON.stringify(pPlayer.messages));
+
+                    if(pPlayer.sMessages.length == 5)
+                        pPlayer.sMessages.pop(pPlayer.sMessages);
+
+                    pPlayer.sMessages.unshift("From " + player.sPhoneNumber + ": " + toSend);
+
+                    console.log("" + JSON.stringify(pPlayer.sMessages));
+                    bFound = true;
                 }
             }
-            if(bFound) {
+
+            if(bFound)
                 player.sendMessage("[PHONE] Sent to " + number + ": " + toSend);
-            } else {
+            else
                 player.sendMessage("[PHONE] Unable to send message to this number.");
-            }
         }
     }
 };

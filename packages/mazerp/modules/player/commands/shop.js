@@ -3,7 +3,7 @@ const functions = require("../../../functions");
 module.exports = {
     command: {
         aliases: ["showShop"],
-        name: "shop",
+        name: "Shop",
         execute: (player, message) => {
             player.player.call("shopMenuShow");           
         }

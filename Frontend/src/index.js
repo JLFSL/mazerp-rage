@@ -7,7 +7,6 @@ import RootRoute from './scripts/Root/RootRoute';
 import LoginRoute from './scripts/Login/LoginRoute';
 import ActionRoute from './scripts/Action/ActionRoute';
 import CreationRoute from './scripts/Custom/CreationRoute';
-import StatusRoute from './scripts/Status/StatusRoute';
 
 /* Style Imports */
 import 'bootstrap/dist/css/bootstrap.css';
@@ -30,7 +29,6 @@ const routes = (
       <Route path="/custom">
         <Route path="/create" component={ CreationRoute } />
       </Route>
-      <Route path="/status" component={ StatusRoute } />
 		</Route>
 	</Router>
 );

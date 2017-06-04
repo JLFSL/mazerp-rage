@@ -2,17 +2,19 @@ import Component from 'inferno-component';
 import { Link } from 'inferno-router';
 
 import DebugRoute from '../Debug/DebugRoute';
+import StatusRoute from '../Status/StatusRoute';
 
 class RootRoute extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      HUD: false
+      HUD: true // Show Hud?
     }
   }
 
   render() {
     const { children } = this.props;
+    const { HUD } = this.state;
 
     const sidebar = {
       width: '200px',
@@ -39,6 +41,10 @@ class RootRoute extends Component {
         </div>
 
         <DebugRoute />
+
+        {HUD ?
+          <StatusRoute />
+        : null}
 
         { children }
       </div>

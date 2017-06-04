@@ -30,6 +30,9 @@ setInterval(() => {
         variables.PlayerInfo[p].fHunger += 1.66667;
         variables.PlayerInfo[p].fThirst += 1.66667;
 
+        // Update the HUD
+        variables.PlayerInfo[p].player.call('updateHUD', variables.PlayerInfo[p].fHunger, variables.PlayerInfo[p].fThirst);
+
         //variables.PlayerInfo[p].sendMessage(`${p}: hungerthirst update ${variables.PlayerInfo[p].fHunger} ${variables.PlayerInfo[p].fThirst}`);
         //variables.PlayerInfo[p].sendMessage(variables.getHungerState(variables.PlayerInfo[p].fHunger)[0]);
         //variables.PlayerInfo[p].sendMessage(variables.getThirstState(variables.PlayerInfo[p].fThirst)[0]);

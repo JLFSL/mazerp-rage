@@ -10,7 +10,7 @@ module.exports = {
                 for(i=player.messages.length-1; i>=0; i--) {
                     player.sendMessage("" + player.messages[i]);
                 }
-                
+
                 player.sendMessage("[INFO] Use '/text [number] [message] to send a text message!");
                 return;
             }
@@ -20,8 +20,9 @@ module.exports = {
             for(let i = 2; i < arguments.length; i++) {
                 toSend += " " + arguments[i];
             }
-
             let bFound = false;
+
+            player.sPhoneNumber = "06-1337-69";
 
             for(playerKey in variables.PlayerInfo) {
                 let pPlayer = variables.PlayerInfo[playerKey];

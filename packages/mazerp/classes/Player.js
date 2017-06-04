@@ -176,7 +176,7 @@ module.exports = class Player {
 
                 var query = `UPDATE \`players\` SET`;
 
-                   for (var key in object) {
+                for (var key in object) {
                     if (object[key] == "CURRENT_TIMESTAMP") query += ` ${connection.escapeId(key)} = CURRENT_TIMESTAMP,`;
                     else query += ` ${connection.escapeId(key)} = ${connection.escape(object[key])},`;
                 }

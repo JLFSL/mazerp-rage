@@ -4,7 +4,6 @@ const Collection = require("./classes/Collection"),
       nodeDir = require("node-dir");
 
 const Player = require("./classes/Player");
-const Taxi = require("./classes/Taxi");
 
 const variables = require("./variables");
 

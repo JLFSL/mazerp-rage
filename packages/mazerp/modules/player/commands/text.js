@@ -7,13 +7,13 @@ module.exports = {
         name: "text",
         execute: (player, message, arguments) => {
             if (arguments.length < 3) {
-                for(var i=player.messages.length-1; i>=0; i--) {
-                    player.sendMessage(player.messages[i]);
-                }
-                 return player.sendMessage("The usage for that command is (/text [number] [message] )");
+
+                for(i=player.messages.length-1; i>=0; i--) {
+                    player.sendMessage("" + player.messages[i]);
+                }               
+                player.sendMessage("[INFO] Use '/text [number] [message] to send a text message!");
+                return;
             }
-
-
 
             let number = arguments[1];
             let toSend = "";
@@ -33,6 +33,7 @@ module.exports = {
                         pPlayer.messages.pop();
                     }
                     pPlayer.messages.unshift("From " + player.sPhoneNumber + ": " + toSend);
+
                 }
             }
             if(bFound) {

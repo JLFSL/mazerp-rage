@@ -183,6 +183,7 @@ mp.events.add({
         inventoryBrowser.destroy();
     }
 
-
+    
 });
+
 

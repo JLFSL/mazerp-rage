@@ -1,14 +1,14 @@
 # MazeRP Roleplay
 
 ## Authors
-@JLFSL - Jimmy
+[@JLFSL](https://github.com/JLFSL) - Jimmy
 
-@bryandesigning - MrBoolean
+[@bryandesigning](https://github.com/bryandesigning) - MrBoolean
 
-@Just-Stay-Alive - Just Stay Alive
+[@Just-Stay-Alive](https://github.com/Just-Stay-Alive) - Just Stay Alive
 
 @Svvite - Hanno
 
 
 ## About
-MazeRP is a roleplay server written for http://mazerp.com on the http://rage.mp client for GTA:V
+MazeRP is a roleplay server written for [MazeRP.com](http://mazerp.com) on the [Rage.MP](http://rage.mp) client for GTA:V

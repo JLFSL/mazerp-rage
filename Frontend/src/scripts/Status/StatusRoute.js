@@ -31,13 +31,16 @@ class StatusRoute extends Component {
 
     const hungerStyle = {
       position: 'absolute',
-      width: '125px',
+      width: '165px',
       height: '50px',
       bottom: '1.6%',
-      left: '16%'
+      left: '16%',
     };
 
-    const barStyle = { margin: '3px' };
+    const barStyle = { 
+      margin: '3px',
+      border: '1px solid black',
+    };
 
     return (
       <div style={hungerStyle}>

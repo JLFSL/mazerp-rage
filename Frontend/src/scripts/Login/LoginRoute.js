@@ -1,5 +1,5 @@
-import Inferno from 'inferno';
 import Component from 'inferno-component';
+import classnames from 'classnames';
 
 const logo = require('../../images/MazeRP.png');
 
@@ -59,64 +59,66 @@ class LoginRoute extends Component {
   render() {
     const { email, password, error, loading } = this.state;
     return (
-      <form id="login">
-        <div class="col-md-8 col-md-offset-2">
+      <form id="login" onChange={this.handleChange} class="col-md-8 col-md-offset-2">
           <div class="announce-box">
             <div class="announce">
               <div class="announce-header">
-                <div class="announce-heading">Login</div>
+                Login
               </div>
               <div class="announce-main">
-                <div class="col-md-12">
-                  <div class="announce-row">
+
+                <div class="col-sm-12">
                     <img class="login-logo col-xs-8 col-xs-offset-2" src={logo}  />
-                  </div>
                 </div>
 
                 {loading ?
-                  <div class="col-md-12">
-                    <div class="announce-row" style={{ color: 'white', 'text-align': 'center' }}>
-                      <h1>Attempting Login...</h1>
-                      <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-                    </div>
+
+                  <div class="col-sm-12 attempt-login">
+                    <h1>Attempting Login...</h1>
+                    <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                   </div>
+
                 :
+
                   <div>
+
                     {error ?
-                      <div class="col-md-12">
-                        <div class="alert alert-danger" style={{ 'text-align': 'center', color: 'red' }}>
+                      <div class="col-sm-12">
+                        <div class="alert alert-danger login-error">
                            <span>{error}</span>
                         </div>
                       </div>
                     : null}
-                    <div class="col-md-12" style={{ 'margin-top': '5px' }}>
-                      <div class="announce-row">
-                        <div class="selection-button-full unhoverable col-md-4" style={{ cursor: 'default' }}>E-mail</div>
-                        <input type="email" name="email" onChange={this.handleChange} value={email} class="announce-input col-md-8" style={{ height: '40px', 'line-height': '40px', opacity: '0.8' }} required />
-                      </div>
+
+                    <div class="col-md-12 login-input email-input">
+                      <div class="selection-button-full unhoverable col-md-4">E-mail</div>
+                      <input type="email" name="email" value={email} class="announce-input col-md-8" style={{ height: '40px', 'line-height': '40px', opacity: '0.8' }} required />
                     </div>
-                    <div class="col-md-12" style={{ 'margin-bottom': '10px' }}>
-                      <div class="announce-row">
-                        <div class="selection-button-full unhoverable col-md-4"  style={{ cursor: 'default' }}>Password</div>
-                        <input type="password" name="password" onChange={this.handleChange} value={password} class="announce-input col-md-8" style={{ height: '40px', 'line-height': '40px', opacity: '0.8' }} required />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="selection-row">
-                        <div class="selection-button-full button-yellow" onClick={this.login}>Login</div>
-                      </div>
+
+                    <div class="col-md-12 login-input password-input">
+                      <div class="selection-button-full unhoverable col-md-4">Password</div>
+                      <input type="password" name="password" value={password} class="announce-input col-md-8" style={{ height: '40px', 'line-height': '40px', opacity: '0.8' }} required />
                     </div>
                   </div>
                 }
-                <div class="col-md-6">
-                  <div class="selection-row">
+
+                <div class="login-buttons">
+
+                  {!loading ?
+                    <div class="col-sm-4 col-sm-offset-2">
+                      <div class="selection-button-full button-green" type="submit" onClick={this.login}>Login</div>
+                    </div>
+                  : null}
+
+                  <div class={classnames({ 'col-md-12': loading, 'col-sm-4': !loading })}>
                     <div class="selection-button-full button-red" onClick={this.disconnect} id="disconnect">Disconnect</div>
                   </div>
+
                 </div>
+
               </div>
             </div>
           </div>
-        </div>
       </form>
     )
   }

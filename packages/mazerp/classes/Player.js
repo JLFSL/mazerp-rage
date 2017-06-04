@@ -23,7 +23,9 @@ module.exports = class Player {
         this.sMessages = [];
 
         this.pFaction; // Pointer to faction player works in - check if not null to know whether the player is employed or not.
-        this.iFactionPay; // Combined payment - makes sure you get paid if you switch jobs. (e.g: taxi: $20 + bus: $10, combined $30)
+
+        // NOTE: This should default to unemployed payment
+        this.iFactionPay = 0; // Combined payment - makes sure you get paid if you switch jobs. (e.g: taxi: $20 + bus: $10, combined $30)
 
         this.iEmploymentTicks;
         this.iEmploymentTime;

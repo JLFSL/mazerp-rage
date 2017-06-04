@@ -78,6 +78,11 @@ mp.events.add({
         player.setFaceFeature(parseInt(index), parseFloat(scale));
     },
 
+    "updateHeadBlend": (shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent=false) => {
+        // player.setHeadBlendData(5, 1, 2, 3, 1, 1, 2, 2, 2, false);
+        player.setHeadBlendData(shapeFirstID, shapeSecondID, shapeThirdID, skinFirstID, skinSecondID, skinThirdID, shapeMix, skinMix, thirdMix, isParent);
+    },
+
     "updatePlayerModel": (model) => {
         player.model = mp.game.joaat(model);
     },
@@ -200,7 +205,7 @@ mp.events.add({
         }
     },
 
-    
+
     "showWeedDeliveryMenu": () => {
         if(weedDeliveryMenuBrowser == undefined) {
             weedDeliveryMenuBrowser = mp.browsers.new("package://html/weed_delivery.html");

@@ -25,8 +25,7 @@ module.exports = class Player {
         this.iFactionRank;
         this.sFactionName;
         this.bOnDuty;
-
-
+      
         this.sPhoneNumber;
         this.messages = [];
 
@@ -128,7 +127,6 @@ module.exports = class Player {
 
     playAnimation(dictionary, name, speed = 1, flag = 1) {
         this.player.playAnimation(dictionary, name, parseFloat(speed), parseInt(flag));
-        this.sendMessage(`SERVER: Playing animation <b>${name}</b> from <b>${dictionary}</b>`);
     }
 
     respawnByDeath(position, heading) {

@@ -5,7 +5,7 @@ module.exports = {
 	output: {
 		path: '/',
 		filename: 'bundle.js',
-		publicPath: 'http://localhost:8080/'
+		publicPath: '/' // http://localhost:8080/
 	},
 	//devtool: 'source-map',
 	module: {

@@ -15,9 +15,11 @@ module.exports = {
 
             // Open our login
             player.player.call("openMenu", "/login");
-            player.setDimension(variables.dimensions.noLogin); // for testing purposes
+            player.setDimension(variables.dimensions.noLogin);
 
-            variables.PlayerInfo[player.player.id] = player;
+            // Add the current player to our array
+            // REMINDER: remove on disconnect
+            variables.PlayerInfo.push(player);
         }
     }
 };

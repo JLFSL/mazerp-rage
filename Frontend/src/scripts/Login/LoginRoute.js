@@ -101,14 +101,14 @@ class LoginRoute extends Component {
                         <input type="password" name="password" onChange={this.handleChange} value={password} class="announce-input col-md-8" style={{ height: '40px', 'line-height': '40px', opacity: '0.8' }} required />
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="selection-row">
                         <div class="selection-button-full button-yellow" onClick={this.login}>Login</div>
                       </div>
                     </div>
                   </div>
                 }
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="selection-row">
                     <div class="selection-button-full button-red" onClick={this.disconnect} id="disconnect">Disconnect</div>
                   </div>

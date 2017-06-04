@@ -186,5 +186,4 @@ mp.events.add({
     
 });
 
-mp.keys.bind(0x45,mp.keys.isDown(0x45), () => mp.game.graphics.notify("KEY PRESSED"));
 

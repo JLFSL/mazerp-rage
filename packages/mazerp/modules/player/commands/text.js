@@ -10,6 +10,7 @@ module.exports = {
                 for(i=player.messages.length-1; i>=0; i--) {
                     player.sendMessage("" + player.messages[i]);
                 }
+                
                 player.sendMessage("[INFO] Use '/text [number] [message] to send a text message!");
                 return;
             }

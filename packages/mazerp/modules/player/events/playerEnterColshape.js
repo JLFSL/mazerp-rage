@@ -20,12 +20,10 @@ module.exports = {
                     player.player.call('toggleShopKeybind' /*, openMenu, inPossession */);
                 }
             }
-
             if(colshape.id == variables.drugs.drugSale.id) { // selling drug pound
                 if(!player.iFaction) {
                     if("weedOunce" in player.aInventory)
-                        // trigger selling etc.
-                        ;
+                        player.player.call("showWeedDeliveryMenu");
                     else if("weedStacks" in player.aInventory) 
                         player.sendMessage("Dawg, come back with some stuff I can work with. I need an ounce, no stacks.");
                 }

@@ -6,6 +6,7 @@ module.exports = {
         name: "cefCollectWeed",
         execute: (player, amount) => {
             let current = 0;
+
             if(player.aInventory != undefined && "weedStacks" in player.aInventory) {
                 current = player.aInventory["weedStacks"];
             } else {

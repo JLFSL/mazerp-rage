@@ -64,6 +64,7 @@ module.exports = class Framework extends EventEmitter {
         mp.events.add({ "cefPoliceMBT_runPlate": (player, plate) => { this.emit("cefPoliceMBT_runPlate", player.class, plate); }});
 
         mp.events.add({ "cefCollectWeed": (player,amount) => { this.emit("cefCollectWeed",player.class ,amount); }});
+        mp.events.add({ "cefDeliverWeed": (player) => { this.emit("cefDeliverWeed",player.class); }});
 
         /* No Documentation */
         // mp.events.add({ "playerEnterCheckpoint": (player) => { this.emit("playerEnterCheckpoint", player); }});

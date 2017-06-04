@@ -26,6 +26,7 @@ module.exports = class Player {
         this.sFactionName;
         this.bOnDuty;
 
+
         this.sPhoneNumber;
         this.messages = [];
 

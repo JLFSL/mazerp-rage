@@ -37,7 +37,15 @@ setInterval(() => {
         //variables.PlayerInfo[p].sendMessage(variables.getHungerState(variables.PlayerInfo[p].fHunger)[0]);
         //variables.PlayerInfo[p].sendMessage(variables.getThirstState(variables.PlayerInfo[p].fThirst)[0]);
 
-        /*if(variables.PlayerInfo[p].bEmployed) {
+        if(variables.PlayerInfo[p].bUnconscious) {
+            variables.PlayerInfo[p].iUnconsciousTime++;
+            if(variables.PlayerInfo[p].iUnconsciousTime >= 10) {
+                variables.PlayerInfo[p].respawnByDeath(variables.respawnByDeath.position, variables.respawnByDeath.heading);
+                variables.PlayerInfo[p].iUnconsciousTime = 0;
+            }
+        }
+
+        if(variables.PlayerInfo[p].bEmployed) {
             variables.PlayerInfo[p].iEmploymentTime++;
 
             if(variables.PlayerInfo[p].iEmploymentTime >= 5) { // If time is 5 minutes, give player new employment tick, reset time for tick and add the payment he receives for that tick to the payment var.
@@ -45,21 +53,23 @@ setInterval(() => {
                 variables.PlayerInfo[p].iEmploymentTime = 0;
                 variables.PlayerInfo[p].iPayment += variables.PlayerInfo[p].job.payPerTick;
             }
-        }*/
+        }
     }
 
     // Paycheck
-    /*if(minutes == 40) {
+    if(minutes == 40) {
         for(var p = 0; p < variables.PlayerInfo.length; p++) {
                 let Payment = variables.PlayerInfo[p].iPayment;
-                // send proper message to player that it worked n stuff
+                
                 if(variables.PlayerInfo[p].iEmploymentTicks > 0) {
                     variables.PlayerInfo[p].iBankAccount += Payment;
+                    variables.PlayerInfo[p].sendMessage("[PAYCHECK] You received your paycheck of " + Payment + "$ for your tasks.");
                 } else {
                     variables.PlayerInfo[p].iBankAccount += variables.economy.welfare;
+                    variables.PlayerInfo[p].sendMessage("[PAYCHECK] You received welfare of " + variables.economy.welfare + "$ for being unemployed.");
                 }
                 variables.PlayerInfo[p].iEmploymentTicks = 0;
                 variables.PlayerInfo[p].iPayment = 0;
         }
-    }*/
+    }
 }, 60000);

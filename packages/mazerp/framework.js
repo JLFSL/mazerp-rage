@@ -40,7 +40,7 @@ module.exports = class Framework extends EventEmitter {
         }});
 
         mp.events.add({ "playerQuit": (player, exitType, reason) => { this.emit("playerQuit", player.class, exitType, reason); }});
-        mp.events.add({ "playerDeath": (player, reason, killer) => { this.emit("playerDeath", player.class, reason, killer); }});
+        mp.events.add({ "playerDeath": (player, reason, killer) => { this.emit("playerDeath", player.class, reason, killer.class); }});
         mp.events.add({ "playerEnterVehicle": (player, vehicle, seat) => { this.emit("playerEnterVehicle", player.class, vehicle, seat); }});
         mp.events.add({ "playerEnteredVehicle": (player, vehicle) => { this.emit("playerEnteredVehicle", player.class, vehicle); }});
         mp.events.add({ "playerExitVehicle": (player) => { this.emit("playerExitVehicle", player.class); }});

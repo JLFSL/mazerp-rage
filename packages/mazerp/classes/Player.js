@@ -22,9 +22,9 @@ module.exports = class Player {
 
         this.iFaction;
 
-        //this.bEmployed;
-        //this.iEmploymentTicks;    --      these are related to the paycheck, which I temporarily disabled. ^Jimmy
-        //this.iEmploymentTime;
+        this.bEmployed;
+        this.iEmploymentTicks;
+        this.iEmploymentTime;
     }
 
     sendMessage(message) {

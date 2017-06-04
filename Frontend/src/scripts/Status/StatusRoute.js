@@ -34,12 +34,12 @@ class StatusRoute extends Component {
       width: '125px',
       height: '50px',
       bottom: '1.6%',
-      left: '16%',
+      left: '16%'
     };
 
     const barStyle = {
       margin: '3px',
-      border: '1px solid black',
+      border: '1px solid black'
     };
 
     return (

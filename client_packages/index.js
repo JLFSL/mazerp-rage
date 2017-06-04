@@ -207,11 +207,9 @@ mp.events.add({
     "showInventory": (inventory, itemInfo) => { // INVENTORY HAS TO BE STRINGIFIED! -> otherwise crashing GTA 5
         inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + inventory + "&itemInformation=" + itemInfo);
     }, // passing the whole itemInfo.js via $_GET as well as the inventory is super primitive and needs to be overworked -Svvite.
-
     "hideInventory": () => {
         inventoryBrowser.destroy();
     }
-
 
 });
 

@@ -25,7 +25,7 @@ module.exports = class Player {
         this.iFactionRank;
         this.sFactionName;
         this.bOnDuty;
-
+      
         this.sPhoneNumber;
         this.messages = [];
 

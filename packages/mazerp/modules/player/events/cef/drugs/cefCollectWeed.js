@@ -12,12 +12,11 @@ module.exports = {
                 player.aInventory["weedStacks"] = 0;
             }
             
-            if((current+amount) <= 5) {
-            player.aInventory["weedStacks"] += amount;
-            } else {
+            if((current+amount) <= 5)
+                player.aInventory["weedStacks"] += amount;
+            else
                 player.aInventory["weedStacks"] = 5;
-            }
-
+            
             player.sendMessage("You are now in possession of " + player.aInventory["weedStacks"] + " weed stacks! (MAX: 5)")
         }
     }

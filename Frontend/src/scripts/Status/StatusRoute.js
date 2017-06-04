@@ -37,7 +37,10 @@ class StatusRoute extends Component {
       left: '16%'
     };
 
-    const barStyle = { margin: '3px' };
+    const barStyle = {
+      margin: '3px',
+      border: '1px solid black'
+    };
 
     return (
       <div style={hungerStyle}>

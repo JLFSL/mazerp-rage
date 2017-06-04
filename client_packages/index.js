@@ -123,7 +123,7 @@ mp.events.add({
 
     "toggleChat": (value) => {
         mp.gui.chat.activate(value);
-        mp.gui.execute(`mp.invoke("focus", ${!value})`);
+        mp.gui.execute(`mp.invoke("focus", ${!value})`); player.freezePosition(true);
     },
 
     "setRot": (value) => {
@@ -147,6 +147,19 @@ mp.events.add({
         mp.events.callRemote("cefCheckWallet");
         if(interactionMenuBrowser)
             interactionMenuBrowser.destroy();
+    },
+
+    "toggleShopKeybind": (toggle, data = null) => {
+        if (toggle) {
+            browser.execute(`console.log('Enabled Keybind')`);
+            mp.keys.bind(0x45, true, () => {
+                browser.execute(`console.log('key pressed')`);
+                browser.execute('window.app.history.push("/shop/convenience")');
+            });
+        } else {
+            browser.execute(`console.log('Disabled Keybind')`);
+            mp.keys.unbind(0x45, true);
+        }
     },
 
     "shopMenuShow": () => {
@@ -194,12 +207,12 @@ mp.events.add({
     "showInventory": (inventory, itemInfo) => { // INVENTORY HAS TO BE STRINGIFIED! -> otherwise crashing GTA 5
         inventoryBrowser = mp.browsers.new("package://html/inventory.html?inventory=" + inventory + "&itemInformation=" + itemInfo);
     }, // passing the whole itemInfo.js via $_GET as well as the inventory is super primitive and needs to be overworked -Svvite.
-    
+
     "hideInventory": () => {
         inventoryBrowser.destroy();
     }
 
-    
+
 });
 
 

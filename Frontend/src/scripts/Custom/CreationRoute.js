@@ -1,4 +1,5 @@
 import Component from 'inferno-component';
+import classnames from 'classnames';
 
 // This variable should really be apart of the state...
 const categoryList = [
@@ -44,6 +45,7 @@ class CreationRoute extends Component {
 
     this.state = {
       stage: 0,
+      page: 0,
       first: '',
       last: '',
       gender: 0,
@@ -87,6 +89,7 @@ class CreationRoute extends Component {
     this.handleStage = this.handleStage.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleFaceChange = this.handleFaceChange.bind(this);
+    this.togglePage = this.togglePage.bind(this);
   }
 
   componentWillMount() {
@@ -165,8 +168,14 @@ class CreationRoute extends Component {
     mp.trigger('updateFace', e.target.name, (e.target.value / 100));
   }
 
+  togglePage() {
+    const { page } = this.state;
+
+    this.setState({ page: (page === 0 ? 1 : 0) });
+  }
+
   render() {
-    const { first, last, face, stage } = this.state;
+    const { first, last, face, stage, page } = this.state;
 
     return (
       <div style={{ width: '100%', height: '100%;' }}>
@@ -177,7 +186,7 @@ class CreationRoute extends Component {
             </div>
             <div class="menu-main col-xs-12">
 
-              {stage == 0 ?
+              {stage === 0 ?
                 <div>
                   <div class="sub-header" style={{ 'margin-top': '5px' }}>Enter a name</div>
                   <div class="selection-row row">
@@ -187,7 +196,7 @@ class CreationRoute extends Component {
                 </div>
               : null}
 
-              {stage == 1 ?
+              {stage === 1 ?
                 <div>
                   <div class="sub-header" style={{ 'margin-top': '15px' }}>Overall</div>
                   <div class="selection-row cc-row row">
@@ -207,22 +216,29 @@ class CreationRoute extends Component {
                 </div>
               : null}
 
-              {stage == 2 ?
+              {stage === 2 ?
                 <div>
                   <div class="sub-header" style={{ 'margin-top': '15px' }}>Face Features</div>
 
-                  {faceList.map((cat) => (
-                    <div class="selection-row cc-row row">
+                  <div>
+                    <div class={classnames('selection-button-full', { 'button-red': (page === 1), 'button-green': (page === 0) })} onClick={() => { this.togglePage(); }}>{page === 0 ? 'More Options' : 'Previous Options'}</div>
+                  </div>
 
-                      <div class="selection-caption small">{cat.name}</div>
-                      <input class="range" style={{ width: '60%', padding: '0 2.5%', float: 'left', background: 'rgba(0,0,0,0)' }} name={cat.id} type="range" min={0} max={100} step={1} defaultValue={0} value={face[cat.id] * 100} onChange={this.handleFaceChange} />
-                    </div>
-                  ))}
+                  {faceList.map((cat, i) => {
+                    if ((page * 10) > i || i > (page * 10 + 10)) return null;
+
+                    return (
+                      <div class="selection-row cc-row row">
+                        <div class="selection-caption small">{cat.name}</div>
+                        <input class="range" style={{ width: '60%', padding: '0 2.5%', float: 'left', background: 'rgba(0,0,0,0)' }} name={cat.id} type="range" min={0} max={100} step={1} defaultValue={0} value={face[cat.id] * 100} onChange={this.handleFaceChange} />
+                      </div>
+                    );
+                  })}
 
                 </div>
               : null}
 
-              {stage == 3 ?
+              {stage === 3 ?
                 <div style={{ 'color': '#FFFFFF', 'text-align': 'center' }}>
                   <h1>Are you sure?</h1>
                   <p>Once you click confirm, you will no longer be able to make changes to your characters physical appearance!</p>
@@ -232,7 +248,7 @@ class CreationRoute extends Component {
               <div class="selection-row row" style={{ 'margin-top': '10px', 'margin-left': '-5px' }}>
                 {stage > 0 ? <div class="selection-button-full button-red" onClick={() => { this.handleStage(-1); }}>Go Back</div> : null}
                 {stage < 3 ? <div class="selection-button-full button-green" onClick={() => { this.handleStage(1); }}>Next Step</div> : null}
-                {stage == 3 ? <div class="selection-button-full button-green" onClick={() => { this.handleConfirm(); }}>Confirm</div> : null}
+                {stage === 3 ? <div class="selection-button-full button-green" onClick={() => { this.handleConfirm(); }}>Confirm</div> : null}
               </div>
             </div>
           </div>

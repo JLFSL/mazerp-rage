@@ -16,7 +16,7 @@ module.exports = {
                     if("weedStacks" in player.inventory) {
                         inPossession = player.inventory["weedStacks"];
                     }
-                    player.player.call("showWeedMenu", inPossession);
+                    player.player.call('toggleShopKeybind' /*, openMenu, inPossession */);
                 }
             }
 
@@ -29,7 +29,8 @@ module.exports = {
             }
 
             if(variables.ConvenientStoreInfo.indexOf(colshape.id) > -1) { // Convenient stores
-                player.player.call("shopMenuShow");
+                player.player.call('toggleShopKeybind', true /*, openMenu, inPossession */);
+                // player.player.call("shopMenuShow");
             }
 
             logger.log("debug", `${player.name} entered Colshape ID ${colshape.id}`);

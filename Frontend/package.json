@@ -4,7 +4,7 @@
   "description": "InGame UIFrontend for MazeRP.com",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.conf.js --host 0.0.0.0",
+    "start": "webpack-dev-server --config webpack.conf.js --host 0.0.0.0 --hot",
     "build": "rm -rf ./dist & webpack --config webpack.prod.js --progress",
     "lint": "eslint src"
   },
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.1",
     "font-awesome": "^4.7.0",

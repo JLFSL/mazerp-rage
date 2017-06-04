@@ -1,0 +1,79 @@
+<!--
+Author: Hanno 'Svvite' Grimm
+Author URI: http://svvite.net
+License sold to RusticTwitch on the 8th of April 2017, the usage of this HTML file is limited to the use purposes of MazeRP and is not allowed to be resold to anyone..
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css\main.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css\bootstrap-theme.min.css" type="text/css">
+<link rel="stylesheet" href="css\font-awesome.min.css">
+<script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
+<title>Weed Delivery</title>
+</head>
+
+<script>
+  jQuery(document).ready(function($) {
+   var selling = false;
+   var alreadySold = false;
+
+    $("#deliver").click(function() {
+      if(selling == false && alreadySold == false) {
+
+        $(this).removeClass("button-green").addClass("button-red");
+        $(this).html("5:00");
+
+        selling = true;
+
+        var minutes = 5;
+        var seconds = 0;
+
+        var timer = setInterval(function() {
+          if(minutes == 0 && seconds <= 0) {
+            clearInterval(timer);
+
+            alreadySold = true;
+            $("#deliver").removeClass("button-red").html("Delivered");
+            mp.trigger("deliverWeed");
+
+          } else {
+
+            if(seconds == 0) {
+              minutes--;
+              seconds = 59;
+            } else {
+              seconds--;
+            }
+
+            $("#deliver").html(minutes + ":" + ("0" + seconds).slice(-2));
+          }
+        }, 10); // testing timer
+      }
+    });
+
+
+
+
+  });
+</script>
+
+<body style="background-color: rgba(0,0,0,0); overflow: hidden;">
+<div class="col-xs-4 col-xs-offset-8" style="padding-right: 0;">
+  <div class="announce-box" style="display: block;">
+    <div class="announce" style="position: relative; top: 75%; float: right;">
+      <div class="announce-main jump-from-right" style="padding: 0;">
+        <div class="col-xs-12">
+          <div class="selection-row">
+            <div class="selection-button-full button-green" id="deliver">Deliver</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

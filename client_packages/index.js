@@ -7,6 +7,7 @@ let camera;
 
 let browser;
 let weedMenuBrowser = undefined;
+let weedDeliveryMenuBrowser = undefined;
 
 const player = mp.players.local;
 
@@ -160,7 +161,6 @@ mp.events.add({
     "showWeedMenu": (inPossession) => {
         if(weedMenuBrowser == undefined) {
             weedMenuBrowser = mp.browsers.new("package://html/weed.html?alreadyHas="+inPossession);
-        } else {
         }
     },
 
@@ -169,6 +169,23 @@ mp.events.add({
             weedMenuBrowser.destroy();
             weedMenuBrowser = undefined;
         }
+    },
+
+    
+    "showWeedDeliveryMenu": () => {
+        if(weedDeliveryMenuBrowser == undefined) {
+            weedDeliveryMenuBrowser = mp.browsers.new("package://html/weed_delivery.html");
+        }
+    },
+
+    "hideWeedDeliveryMenu": () => {
+        if(weedDeliveryMenuBrowser != undefined) {
+            weedDeliveryMenuBrowser.destroy();
+            weedDeliveryMenuBrowser = undefined;
+        }
+    },
+    "deliverWeed": () => {
+        mp.events.callRemote("cefDeliverWeed");
     },
 
     "collectWeed": (amount) => {

@@ -1,4 +1,9 @@
 module.exports = {
+	"dirtyMoney": {
+		"name": "Dirty Money",
+		"description": "It has no value unless cleaned properly.",
+		"useable": false
+	},
 	"weedStacks": {
 		"name": "Weed Stacks",
 		"description":"Smoke Weed Everyday!",

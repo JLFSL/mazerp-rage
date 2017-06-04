@@ -16,6 +16,11 @@ module.exports = {
                 player.player.call("shopMenuHide");
             }
 
+            if(colshape.id == variables.drugs.drugSaleArea.id) { // leaving drug delivery hotspot
+                player.player.call("hideWeedDeliveryMenu");
+            }
+
+
             logger.log("debug", `${player.name} left Colshape ID ${colshape.id}.`);
         }
     }

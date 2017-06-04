@@ -70,7 +70,7 @@ module.exports = class Vehicle {
 
                     for(var i = 0; i < result.length; i++)
                     {
-                        console.log(result[i].model_name);
+                        console.log(`Spawning Vehicle: ${result[i].model_name}`);
 
                         var position = new mp.Vector3(result[i].position_x, result[i].position_y, result[i].position_z);
                         var rotation = new mp.Vector3(result[i].rotation_x, result[i].rotation_y, result[i].rotation_z);
@@ -79,7 +79,7 @@ module.exports = class Vehicle {
                         veh.dimension = variables.dimensions.public;
                         veh.rotation = rotation;
                     }
-                
+
                     if (result.length == 0) return resolve();
                     else return resolve(result[0]);
                 });

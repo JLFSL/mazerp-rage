@@ -15,10 +15,7 @@ module.exports = {
 
             // Open our login
             player.player.call("openMenu", "/login");
-            player.setDimension(variables.dimensions.noLogin); // for testing purposes
-
-            // ISSUE: only shows last shown menu
-            player.player.call("openMenu", "/status");
+            player.setDimension(variables.dimensions.noLogin);
 
             // Add the current player to our array
             // REMINDER: remove on disconnect

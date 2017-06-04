@@ -15,16 +15,18 @@ module.exports = class Player {
 
         this.fHunger = 0.0;
         this.fThirst = 0.0;
+
         this.bUnconscious = false;
+        this.iUnconsciousTime;
 
         this.sPhoneNumber;
         this.sMessages = [];
 
-        this.iFaction;
+        this.pFaction; // Pointer to faction player works in - check if not null to know whether the player is employed or not.
+        this.iFactionPay; // Combined payment - makes sure you get paid if you switch jobs. (e.g: taxi: $20 + bus: $10, combined $30)
 
-        //this.bEmployed;
-        //this.iEmploymentTicks;    --      these are related to the paycheck, which I temporarily disabled. ^Jimmy
-        //this.iEmploymentTime;
+        this.iEmploymentTicks;
+        this.iEmploymentTime;
     }
 
     sendMessage(message) {

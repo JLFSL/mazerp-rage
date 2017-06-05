@@ -1,7 +1,7 @@
-const Collection = require("./classes/Collection"),
-      EventEmitter = require("events").EventEmitter,
-      Logger = require("./classes/Logger"),
-      nodeDir = require("node-dir");
+const Collection = require("./classes/Collection");
+const EventEmitter = require("events").EventEmitter;
+const Logger = require("./classes/Logger");
+const nodeDir = require("node-dir");
 
 const Player = require("./classes/Player");
 

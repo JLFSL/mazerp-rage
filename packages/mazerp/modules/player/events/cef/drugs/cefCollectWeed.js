@@ -13,7 +13,7 @@ module.exports = {
             }
             
             if((current+amount) <= 16) {
-            player.inventory["weedOunces"]["amount"] += amount;
+                player.inventory["weedOunces"]["amount"] += amount;
             } else {
                 player.inventory["weedOunces"]["amount"] = 16;
             }

@@ -4,33 +4,27 @@ module.exports = class Player {
     constructor(player) {
         this.player = player;
         this.iID;
-        this.iEntity;
+        this.bLoggedIn;
+
+        this.iStaffLevel;
 
         this.iCash;
         this.iBankAccount;
-        this.stLastPaycheck;
-        this.pJob;
-        this.sJobName;
-        this.iJobLevel;
-        this.iJobMissions;
 
-        this.inventory = {};
-        this.iWallet = 0;
+        this.aInventory = {};
 
         this.fHunger = 0.0;
         this.fThirst = 0.0;
         this.bUnconscious = false;
 
-        this.pFaction;
-        this.iFactionRank;
-        this.sFactionName;
-        this.bOnDuty;
-
         this.sPhoneNumber;
-        this.messages = [];
+        this.sMessages = [];
 
-        this.iRent;
-        this.iHouse;
+        this.iFaction;
+
+        this.bEmployed;
+        this.iEmploymentTicks;
+        this.iEmploymentTime;
     }
 
     sendMessage(message) {
@@ -123,12 +117,13 @@ module.exports = class Player {
 
     playAnimation(dictionary, name, speed = 1, flag = 1) {
         this.player.playAnimation(dictionary, name, parseFloat(speed), parseInt(flag));
-        this.sendMessage(`SERVER: Playing animation <b>${name}</b> from <b>${dictionary}</b>`);
     }
 
     respawnByDeath(position, heading) {
         this.player.spawn(position);
         this.player.heading = heading;
+
+        this.bUnconscious = false;
 
         this.inventory = {};
         this.iWallet = 0;
@@ -176,7 +171,7 @@ module.exports = class Player {
 
                 var query = `UPDATE \`players\` SET`;
 
-                   for (var key in object) {
+                for (var key in object) {
                     if (object[key] == "CURRENT_TIMESTAMP") query += ` ${connection.escapeId(key)} = CURRENT_TIMESTAMP,`;
                     else query += ` ${connection.escapeId(key)} = ${connection.escape(object[key])},`;
                 }

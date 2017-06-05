@@ -37,7 +37,9 @@ module.exports = {
                 if(!player.bEmployed) {
                     if("weedPound" in player.inventory) {
                         player.player.call("showWeedDeliveryMenu");
-                    } else if("weedOunces" in player.inventory) { player.sendMessage("Dawg, come back with some stuff I can work with. I need an ounce, no stacks."); }
+                    } else if("weedOunces" in player.inventory) { 
+                        player.sendMessage("Dawg, come back with some stuff I can work with. I need an ounce, no stacks."); 
+                    }
                 }
             }
 

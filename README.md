@@ -1,4 +1,5 @@
 # MazeRP Roleplay
+Although outdated, feel free to use whatever you wish for your RageMP server. This project was discontinued in June 2017.
 
 ## Authors
 [@JLFSL](https://github.com/JLFSL) - Jimmy
